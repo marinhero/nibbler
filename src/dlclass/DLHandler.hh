@@ -11,6 +11,20 @@
 #ifndef DLHANDLER_HH_
 #  define DLHANDLER_HH_
 
+#  include  <string>
+#  include  <map>
+#  include  "DLSymbol.hh"
 
+class DLSymbol;
+
+class DLHandler
+{
+  protected:
+    std::map<std::string, DLSymbol *>   symbols;
+
+  public:
+    DLHandler();
+    virtual ~DLHandler();
+};
 
 #endif /* !DLHANDLER_HH_ */

@@ -5,12 +5,12 @@
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Fri Mar 22 19:16:19 2013 ivan ignatiev
-// Last update Fri Mar 22 19:23:36 2013 ivan ignatiev
+// Last update Fri Mar 22 19:36:56 2013 ivan ignatiev
 //
 
 # include "GTKGraphic.hh"
 
-extern "C" AGraphic *load_graphic(Game &game)
+extern "C" AGraphic *load_graphic(Game *game)
 {
     return (new GTKGraphic(game));
 }
@@ -20,7 +20,7 @@ extern "C" void     *unload_graphic(AGraphic *glib)
     delete glib;
 }
 
-GTKGraphic::GTKGraphic(Game &game) : AGraphic(game)
+GTKGraphic::GTKGraphic(Game *game) : AGraphic(game)
 {
 
 }

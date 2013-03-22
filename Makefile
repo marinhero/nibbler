@@ -5,7 +5,7 @@
 ## Login   <ignati_i@epitech.net>
 ##
 ## Started on  Fri Mar 22 21:02:41 2013 ivan ignatiev
-## Last update Fri Mar 22 21:38:55 2013 ivan ignatiev
+## Last update Fri Mar 22 21:41:43 2013 ivan ignatiev
 ##
 
 NB_SRC 		= 		Nibbler.cpp \
@@ -54,9 +54,16 @@ $(OGL_NAME): 	$(OGL_OBJ)
 $(QT_NAME): 	$(QT_NAME)
 				$(CC) -rdynamic -fPIC -o $(QT_NAME)
 clean:
+				$(RM) 	$(NB_OBJ)
+				$(RM) 	$(GTK_OBJ)
+				$(RM) 	$(QT_OBJ)
+				$(RM) 	$(OGL_OBJ)
 
 fclean: 	clean
-
+			$(RM) 	$(NB_NAME)
+			$(RM) 	$(GTK_NAME)
+			$(RM) 	$(QT_NAME)
+			$(RM) 	$(OGL_NAME)
 
 re: 		fclean all
 

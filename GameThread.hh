@@ -1,9 +1,9 @@
 /*
 ** GameThread.h for nibbler in /home/ignatiev/Projects/nibbler
-** 
+**
 ** Made by ivan ignatiev
 ** Login   <ignati_i@epitech.net>
-** 
+**
 ** Started on  Fri Mar 22 18:54:57 2013 ivan ignatiev
 ** Last update Fri Mar 22 19:00:51 2013 ivan ignatiev
 */
@@ -18,6 +18,8 @@
 class   GameThread
 {
     private:
+        Game            *game_;
+        AGraphic        *glib_;
         pthread_t       move_thread_hndl;
         pthread_t       food_thread_hndl;
 
@@ -28,7 +30,7 @@ class   GameThread
         GameThread(GameThread const &);
         GameThread &operator= (GameThread const &);
     public:
-        GameThread(Game &game, AGraphic *glib);
+        GameThread(Game *game, AGraphic *glib);
         ~GameThread(void);
 
         void    start(void);

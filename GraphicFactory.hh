@@ -1,9 +1,9 @@
 /*
 ** GraphicFactory.h for nibbler in /home/ignatiev/Projects/nibbler
-** 
+**
 ** Made by ivan ignatiev
 ** Login   <ignati_i@epitech.net>
-** 
+**
 ** Started on  Fri Mar 22 18:31:26 2013 ivan ignatiev
 ** Last update Fri Mar 22 18:49:46 2013 ivan ignatiev
 */
@@ -18,8 +18,8 @@
 # define LOAD_FUNC_SYM      "load_graphic"
 # define UNLOAD_FUNC_SYM    "unload_graphic"
 
-typedef AGraphic *(*load_func_t)(Game &);
-typedef void (*unload_func_t)(Game &);
+typedef AGraphic *(*load_func_t)(Game *);
+typedef void (*unload_func_t)(Game *);
 
 class   GraphicFactory
 {
@@ -32,7 +32,7 @@ class   GraphicFactory
         GraphicFactory();
         ~GraphicFactory();
 
-        AGraphic *load(const char *filename, Game &game);
+        AGraphic *load(const char *filename, Game *game);
         AGraphic *unload(AGraphic *glib);
 };
 

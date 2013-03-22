@@ -5,7 +5,7 @@
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Fri Mar 22 19:02:34 2013 ivan ignatiev
-// Last update Fri Mar 22 19:10:19 2013 ivan ignatiev
+// Last update Fri Mar 22 19:36:19 2013 ivan ignatiev
 //
 
 #include        "Nibbler.hh"
@@ -26,8 +26,8 @@ int             main(int argc, char **argv)
          */
         game = new Game(width, height);
         gfactory = new GraphicFactory();
-        glib = gfactory->load(argv[3], *game);
-        gamethread = new GameThread(*game, glib);
+        glib = gfactory->load(argv[3], game);
+        gamethread = new GameThread(game, glib);
         gamethread->start();
         gamethread->wait();
         gfactory->unload(glib);

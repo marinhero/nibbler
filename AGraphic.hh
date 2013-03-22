@@ -16,17 +16,17 @@
 class   AGraphic
 {
     private:
-        Game    &game_;
+        Game    *game_;
 
         AGraphic(void);
     public:
-        AGraphic(Game &game);
+        AGraphic(Game *game);
         AGraphic(AGraphic const &glib);
         AGraphic &operator(AGraphic const &glib);
 
         virtual ~AGraphic(void);
         virtual refresh(void) = 0;
-        Game &game(void);
+        Game *game(void);
 };
 
 #endif /* !AGRAPHIC_H_ */

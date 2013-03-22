@@ -16,7 +16,7 @@
 class GTKGraphic : public AGraphic
 {
     public:
-        GTKGraphic(Game &);
+        GTKGraphic(Game *);
         virtual ~GTKGraphic(void);
         virtual refresh(void);
 };

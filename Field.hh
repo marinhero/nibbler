@@ -1,11 +1,11 @@
 //
-// Field.hh for nibbler in /home/ignatiev/Projects/nibbler
+// Field.hh for nibbler in /Users/Marin/EPITECH/c++/nibbler
 //
 // Made by Marin Alcaraz
 // Login   <alcara_m@epitech.net>
 //
 // Started on  Fri Mar 22 18:55:10 2013 Marin Alcaraz
-// Last update Fri Mar 22 20:57:23 2013 ivan ignatiev
+// Last update Fri Mar 22 21:26:39 2013 Marin Alcaraz
 //
 
 #ifndef _FIELD_H
@@ -18,16 +18,15 @@
 
 class Field
 {
-    field_object_t  **matrix;
+    /*field_object_t  **matrix;
     Field();
     public:
-           Field(Snake const *s, Surface const *sur, Food const *f);
-           Field &operator=(Field const &);
-           Field(const &Field);
+           Field(Snake * const s, Surface * const sur, Food * const f);
+           Field &operator=(Field const &f);
+           Field(Field const &f);
            ~Field();
-
-           void   generate(void);
+           void                 generate(void);
            field_object_t const **get_field(void) const;
-};
+*/};
 
 #endif

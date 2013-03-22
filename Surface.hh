@@ -1,11 +1,11 @@
 //
-// Surface.hh for nibbler in /home/ignatiev/Projects/nibbler
+// Surface.hh for nibbler in /Users/Marin/EPITECH/c++/nibbler
 //
 // Made by Marin Alcaraz
 // Login   <alcara_m@epitech.net>
 //
 // Started on  Fri Mar 22 18:34:40 2013 Marin Alcaraz
-// Last update Fri Mar 22 21:00:55 2013 ivan ignatiev
+// Last update Fri Mar 22 21:13:28 2013 Marin Alcaraz
 //
 
 #ifndef _SURFACE_H

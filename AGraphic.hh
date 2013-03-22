@@ -22,10 +22,9 @@ class   AGraphic
     public:
         AGraphic(Game *game);
         AGraphic(AGraphic const &glib);
-        AGraphic &operator(AGraphic const &glib);
-
-        virtual ~AGraphic(void);
-        virtual void refresh(void) = 0;
+        AGraphic &operator=(AGraphic const &glib);
+        virtual         ~AGraphic(void);
+        virtual void    refresh(void) = 0;
         Game *game(void);
 };
 

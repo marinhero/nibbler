@@ -11,6 +11,7 @@
 #ifndef GRAPHICFACTORY_H_
 # define GRAPHICFACTORY_H_
 
+# include <stdlib.h>
 # include <dlfcn.h>
 # include "Game.hh"
 # include "AGraphic.hh"
@@ -19,14 +20,14 @@
 # define UNLOAD_FUNC_SYM    "unload_graphic"
 
 typedef AGraphic *(*load_func_t)(Game *);
-typedef void (*unload_func_t)(Game *);
+typedef void (*unload_func_t)(AGraphic *);
 
 class   GraphicFactory
 {
     private:
-        void            *dl_handle;
-        load_func_t     lf;
-        unload_func_t   ulf;
+        void            *dl_handle_;
+        load_func_t     lf_;
+        unload_func_t   ulf_;
 
         GraphicFactory(GraphicFactory const &);
         GraphicFactory &operator=(GraphicFactory const &);

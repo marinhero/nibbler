@@ -5,7 +5,7 @@
 // Login   <alcara_m@epitech.net>
 //
 // Started on  Fri Mar 22 18:55:10 2013 Marin Alcaraz
-// Last update Fri Mar 22 19:07:22 2013 Marin Alcaraz
+// Last update Fri Mar 22 19:37:33 2013 Marin Alcaraz
 //
 
 #ifndef _FIELD_H
@@ -19,8 +19,9 @@
 class Field
 {
     field_object_T  matrix;
+    Field();
     public:
-           Field();
+           Field(Snake const *s, Surface const *sur, Food const *f);
            Field(const &Field);
            ~Field();
            int              operator=(const &Field);

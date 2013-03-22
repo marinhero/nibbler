@@ -35,10 +35,10 @@ typedef struct point_s
 class Game
 {
   protected:
-    Field       field;
-    Surface     surface;
-    Snake       snake;
-    Food        food;
+    Field       *field;
+    Surface     *surface;
+    Snake       *snake;
+    Food        *food;
   public:
     Game();
     Game(const int width, const int heigth);

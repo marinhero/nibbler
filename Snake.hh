@@ -5,7 +5,7 @@
 // Login   <alcara_m@epitech.net>
 //
 // Started on  Fri Mar 22 19:00:51 2013 Marin Alcaraz
-// Last update Fri Mar 22 19:07:00 2013 Marin Alcaraz
+// Last update Fri Mar 22 19:34:03 2013 Marin Alcaraz
 //
 
 #ifndef _SNAKE_H
@@ -21,7 +21,7 @@ class Snake
     size_t      size(); //should be 4 by default
 
     public:
-        Snake(Food f, Surface s);
+        Snake(Food *f, Surface *s);
         Snake(const &Snake);
         ~Snake();
         int         operator=(const &Snake);

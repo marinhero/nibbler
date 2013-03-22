@@ -24,7 +24,9 @@ typedef void (*unload_func_t)(Game *);
 class   GraphicFactory
 {
     private:
-        void    *dl_handle;
+        void            *dl_handle;
+        load_func_t     lf;
+        unload_func_t   ulf;
 
         GraphicFactory(GraphicFactory const &);
         GraphicFactory &operator=(GraphicFactory const &);
@@ -32,8 +34,8 @@ class   GraphicFactory
         GraphicFactory();
         ~GraphicFactory();
 
-        AGraphic *load(const char *filename, Game *game);
-        AGraphic *unload(AGraphic *glib);
+        AGraphic    *load(const char *filename, Game *game);
+        void        unload(AGraphic *glib);
 };
 
 #endif /* !GRAPHICFACTORY_H_ */

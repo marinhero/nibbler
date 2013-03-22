@@ -35,20 +35,24 @@ typedef struct point_s
 class Game
 {
   protected:
-    Field       *field;
-    Surface     *surface;
-    Snake       *snake;
-    Food        *food;
-  public:
+    Field               *field_;
+    Surface             *surface_;
+    Snake               *snake_;
+    Food                *food_;
+    int                 width_;
+    int                 height_;
+
     Game();
-    Game(const int width, const int heigth);
+    Game &operator=(Game const &);
     Game(const Game &_other);
-    virtual ~Game();
+  public:
+    Game(int width, int heigth);
+    ~Game();
     bool            left(void);
     bool            right(void);
     bool            move(void);
     void            quit(void);
-    field_object_t  get_field(void);
+    field_object_t  const **get_field(void) const;
     void            regen_food(void);
 };
 

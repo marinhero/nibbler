@@ -5,7 +5,7 @@
 // Login   <baezse_s@epitech.net>
 //
 // Started on  Fri Mar 22 20:52:43 2013 Sergio Baez
-// Last update Fri Mar 22 21:39:46 2013 Sergio Baez
+// Last update Fri Mar 22 23:32:00 2013 Sergio Baez
 //
 
 # include <GL/freeglut.h>
@@ -23,10 +23,38 @@ extern "C" void         *unload_graphic(AGraphic *glib)
 
 OpenGLGraphic::OpenGLGraphic(Game *game) : AGraphic(game)
 {
+  int   c;
+
+  c = 0;
+  glutInit(&c, NULL);
+  glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
+  glutInitWindowSize(this->game()->get_width(), this->game()->get_height());
+  glutInitWindowPosition(0,0);
+  glutCreateWindow("Snake");
+  glutKeyboardFunc(keyboard);
+
+  InitializeGlutCallbacks();
+  glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 }
 
 OpenGLGraphic::~OpenGLGraphic(void)
 {
+}
+
+void keyboard(unsigned char key)
+{
+  switch(key)
+  {
+    case GLUT_KEY_LEFT:
+      this->game()->left();
+      break;
+    case GLUT_KEY_RIGHT:
+      this->game()->right();
+      break;
+    case GLUT_KEY_END:
+      this->game()->quit();
+      break;
+  }
 }
 
 static void RenderSceneCB()
@@ -42,17 +70,5 @@ static void InitializeGlutCallbacks()
 
 void OpenGLGraphic::refresh(void)
 {
-  int   c;
-
-  c = 0;
-  glutInit(&c, NULL);
-  glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
-  glutInitWindowSize(1000, 1000);
-  glutInitWindowPosition(0,0);
-  glutCreateWindow("Snake");
-
-  InitializeGlutCallbacks();
-  glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-  glutMainLoop();
 }
 

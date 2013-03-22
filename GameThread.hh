@@ -12,12 +12,12 @@
 # define GAMETHREAD_H_
 
 # include <pthread.h>
-# include <usleep.h>
+# include <unistd.h>
 # include "Game.hh"
 # include "AGraphic.hh"
 
 # define  MOVE_INTERVAL     100
-# define  REGEN_FOOD_INTERVAL 10000
+# define  REGEN_FOOD_INTERVAL 10000
 
 class   GameThread
 {

@@ -11,26 +11,25 @@
 #ifndef GAME_HH_
 #  define GAME_HH_
 
-#  include  "Field.hh"
-#  include  "Surface.hh"
-#  include  "Food.hh"
-#  include  "Snake.hh"
-
-typedef enum field_object_t
-{
+typedef enum{
   F_EMPTY = 0,
   F_SNAKE_HEAD,
   F_SNAKE_SECT,
   F_WALL,
   F_FOOD
-};
+}  field_object_t;
 
 typedef struct point_s
 {
   int               x;
   int               y;
   field_object_t    type;
-};
+} point_t;
+
+#  include  "Field.hh"
+#  include  "Surface.hh"
+#  include  "Food.hh"
+#  include  "Snake.hh"
 
 class Game
 {

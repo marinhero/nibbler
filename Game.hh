@@ -54,6 +54,8 @@ class Game
     void            quit(void);
     field_object_t  const **get_field(void) const;
     void            regen_food(void);
+    int             get_width() const;
+    int             get_height() const;
 };
 
 #endif /* !GAME_HH_ */

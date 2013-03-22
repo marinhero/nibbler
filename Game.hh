@@ -33,7 +33,6 @@ typedef struct point_s
 
 class Game
 {
-  protected:
     Field               *field_;
     Surface             *surface_;
     Snake               *snake_;

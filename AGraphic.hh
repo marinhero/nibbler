@@ -8,8 +8,8 @@
 ** Last update Fri Mar 22 18:54:32 2013 ivan ignatiev
 */
 
-#ifndef AGRAPHIC_H_
-# define AGRAPHIC_H_
+#ifndef AGRAPHIC_HH_
+# define AGRAPHIC_HH_
 
 #include "Game.hh"
 
@@ -25,8 +25,8 @@ class   AGraphic
         AGraphic &operator(AGraphic const &glib);
 
         virtual ~AGraphic(void);
-        virtual refresh(void) = 0;
+        virtual void refresh(void) = 0;
         Game *game(void);
 };
 
-#endif /* !AGRAPHIC_H_ */
+#endif /* !AGRAPHIC_HH_ */

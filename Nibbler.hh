@@ -11,7 +11,7 @@
 #ifndef NIBBLER_H_
 # define NIBBLER_H_
 
-# include <stdlib.h>
+# include <cstdlib>
 
 # include "Game.hh"
 # include "GraphicFactory.hh"

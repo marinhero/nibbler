@@ -5,7 +5,7 @@
 ## Login   <ignati_i@epitech.net>
 ##
 ## Started on  Fri Mar 22 21:02:41 2013 ivan ignatiev
-## Last update Fri Mar 22 21:41:43 2013 ivan ignatiev
+## Last update Fri Mar 22 22:49:49 2013 ivan ignatiev
 ##
 
 NB_SRC 		= 		Nibbler.cpp \
@@ -43,16 +43,16 @@ QT_OBJ 		= 		$(QT_SRC:.c=.o)
 all: 		$(NB_NAME) $(GTK_NAME) $(OGL_NAME) $(QT_NAME)
 
 $(NB_NAME): 	$(NB_OBJ)
-				$(CC) -o $(NB_NAME)
+				$(CC) $(NB_OBJ) -o $(NB_NAME)
 
 $(GTK_NAME): 	$(GTK_OBJ)
-				$(CC) -rdynamic -fPIC -o $(GTK_NAME)
+				$(CC) -rdynamic -fPIC $(GTK_OBJ) -o $(GTK_NAME)
 
 $(OGL_NAME): 	$(OGL_OBJ)
-				$(CC) -rdynamic -fPIC -o $(OGL_NAME)
+				$(CC) -rdynamic -fPIC $(OGL_OBJ) -o $(OGL_NAME)
 
 $(QT_NAME): 	$(QT_NAME)
-				$(CC) -rdynamic -fPIC -o $(QT_NAME)
+				$(CC) -rdynamic -fPIC $(QT_OBJ) -o $(QT_NAME)
 clean:
 				$(RM) 	$(NB_OBJ)
 				$(RM) 	$(GTK_OBJ)

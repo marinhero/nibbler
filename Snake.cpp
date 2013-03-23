@@ -5,7 +5,7 @@
 // Login   <alcara_m@epitech.net>
 //
 // Started on  Fri Mar 22 19:52:37 2013 Marin Alcaraz
-// Last update Sat Mar 23 02:30:40 2013 ivan ignatiev
+// Last update Sat Mar 23 02:56:04 2013 ivan ignatiev
 //
 
 #include "Snake.hh"
@@ -70,6 +70,8 @@ bool        Snake :: move(void)
     {
         body[i].x = body[i-1].x;
         body[i].y = body[i-1].y;
+        if (body[0].x > this->surface_->get_width() || body[0].y > this->surface_->get_height())
+            return (false);
     }
     return (true);
 }

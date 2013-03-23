@@ -5,7 +5,7 @@
 // Login   <alcara_m@epitech.net>
 //
 // Started on  Fri Mar 22 19:00:51 2013 Marin Alcaraz
-// Last update Sat Mar 23 01:37:50 2013 ivan ignatiev
+// Last update Sat Mar 23 02:56:38 2013 ivan ignatiev
 //
 
 #ifndef _SNAKE_H

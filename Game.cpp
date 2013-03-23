@@ -5,7 +5,7 @@
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Fri Mar 22 20:33:45 2013 ivan ignatiev
-// Last update Sat Mar 23 14:20:20 2013 ivan ignatiev
+// Last update Sat Mar 23 15:20:01 2013 ivan ignatiev
 //
 
 #include "Game.hh"

@@ -5,7 +5,7 @@
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Sat Mar 23 01:02:33 2013 ivan ignatiev
-// Last update Sat Mar 23 14:29:32 2013 ivan ignatiev
+// Last update Sat Mar 23 15:18:49 2013 ivan ignatiev
 //
 
 #include "Field.hh"
@@ -70,7 +70,7 @@ void    Field::generate(void)
 
     point_t const *food  = this->food_->get_food();
 
-    this->matrix_[food->x][food->y] = food->type;
+    this->matrix_[food->y][food->x] = food->type;
 
     std::vector<point_t>::const_iterator walls = this->surface_->get_bounds().begin();
     std::vector<point_t>::const_iterator walls_end = this->surface_->get_bounds().end();

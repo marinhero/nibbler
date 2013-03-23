@@ -5,7 +5,7 @@
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Fri Mar 22 19:16:19 2013 ivan ignatiev
-// Last update Sat Mar 23 14:47:30 2013 ivan ignatiev
+// Last update Sat Mar 23 14:58:11 2013 ivan ignatiev
 //
 
 # include "GTKGraphic.hh"
@@ -65,7 +65,7 @@ void GTKGraphic::refresh(void)
     }
 
     char c;
-    int size = read(1, &c , 1);
+    read(1, &c , 1);
     switch(c)
     {
         case 'l':
@@ -81,4 +81,5 @@ void GTKGraphic::refresh(void)
         case 's' :
             break;
     }
+    read(1, &c, 1);
 }

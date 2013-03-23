@@ -11,6 +11,7 @@
 #ifndef GAMETHREAD_H_
 # define GAMETHREAD_H_
 
+# include <iostream>
 # include <pthread.h>
 # include <unistd.h>
 # include "Game.hh"

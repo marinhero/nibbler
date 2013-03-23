@@ -5,7 +5,7 @@
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Fri Mar 22 20:17:33 2013 ivan ignatiev
-// Last update Sat Mar 23 14:47:28 2013 ivan ignatiev
+// Last update Sat Mar 23 14:58:44 2013 ivan ignatiev
 //
 
 #include "GameThread.hh"
@@ -55,8 +55,9 @@ void    *GameThread::move_thread(void *attr)
     while (1)
     {
         th->game_->move();
+        std::cout << "TEST : " << std::endl;
         th->glib_->refresh();
-        //sleep(MOVE_INTERVAL);
+        usleep(MOVE_INTERVAL);
     }
     return (NULL);
 }

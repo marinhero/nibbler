@@ -5,7 +5,7 @@
 ## Login   <ignati_i@epitech.net>
 ##
 ## Started on  Fri Mar 22 21:02:41 2013 ivan ignatiev
-## Last update Sat Mar 23 02:52:07 2013 ivan ignatiev
+## Last update Sat Mar 23 03:02:43 2013 ivan ignatiev
 ##
 
 NB_SRC 		= 		Nibbler.cpp \
@@ -19,12 +19,16 @@ NB_SRC 		= 		Nibbler.cpp \
 
 GTK_SRC  	= 		GTKGraphic.cpp \
 					Game.cpp \
+					Field.cpp \
+					Snake.cpp \
 					AGraphic.cpp
 
 QT_SRC 		=
 
 OGL_SRC 	= 		OpenGLGraphic.cpp \
 					Game.cpp \
+					Field.cpp \
+					Snake.cpp \
 					AGraphic.cpp
 
 NB_NAME 	= 		nibbler

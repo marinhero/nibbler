@@ -5,7 +5,7 @@
 // Login   <alcara_m@epitech.net>
 //
 // Started on  Fri Mar 22 19:52:37 2013 Marin Alcaraz
-// Last update Sat Mar 23 02:56:04 2013 ivan ignatiev
+// Last update Sat Mar 23 03:08:45 2013 ivan ignatiev
 //
 
 #include "Snake.hh"
@@ -16,8 +16,8 @@ Snake :: Snake(Surface const *surface)
      std::vector<point_t> b;
      point_t    var;
 
-     var.x = 1;
-     var.y = 1;
+     var.x = 0;
+     var.y = 0;
      var.type = F_SNAKE_HEAD;
      body = b;
      while(var.x < 5)
@@ -25,7 +25,6 @@ Snake :: Snake(Surface const *surface)
         body.push_back(var);
         var.type = F_SNAKE_SECT;
         var.x++;
-        var.y++;
      }
      std::cout << "Created Snake X: "<< var.x - 1 << " Y: "<< var.y - 1 << " size 4 " << std::endl;
 }

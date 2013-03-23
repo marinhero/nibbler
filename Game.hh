@@ -19,6 +19,14 @@ typedef enum{
   F_FOOD
 }  field_object_t;
 
+typedef enum
+{
+    X_POS = 0,
+    X_NEG,
+    Y_POS,
+    Y_NEG
+} direction_t;
+
 typedef struct point_s
 {
   int               x;

@@ -1,11 +1,11 @@
 //
-// Snake.cpp for nibbler in /home/ignatiev/Projects/nibbler
+// Snake.cpp for nibbler in /Users/Marin/EPITECH/c++/nibbler
 //
 // Made by Marin Alcaraz
 // Login   <alcara_m@epitech.net>
 //
 // Started on  Fri Mar 22 19:52:37 2013 Marin Alcaraz
-// Last update Sat Mar 23 03:08:45 2013 ivan ignatiev
+// Last update Sat Mar 23 11:41:52 2013 Marin Alcaraz
 //
 
 #include "Snake.hh"
@@ -25,6 +25,7 @@ Snake :: Snake(Surface const *surface)
         body.push_back(var);
         var.type = F_SNAKE_SECT;
         var.x++;
+        var.y++;
      }
      std::cout << "Created Snake X: "<< var.x - 1 << " Y: "<< var.y - 1 << " size 4 " << std::endl;
 }
@@ -63,7 +64,7 @@ bool        Snake :: right(void)
 
 bool        Snake :: move(void)
 {
-    int     i;
+    size_t     i;
 
     for(i = 0; i <= this->get_size(); i++)
     {

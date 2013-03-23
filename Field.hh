@@ -5,7 +5,7 @@
 // Login   <alcara_m@epitech.net>
 //
 // Started on  Fri Mar 22 18:55:10 2013 Marin Alcaraz
-// Last update Sat Mar 23 01:28:16 2013 ivan ignatiev
+// Last update Sat Mar 23 13:06:49 2013 ivan ignatiev
 //
 
 #ifndef _FIELD_H
@@ -28,6 +28,7 @@ class Field
     int             height_;
 
     Field(void);
+    void empty_matrix(void);
     public:
            Field(Snake const *snake, Surface const *surface, Food const *food);
            Field &operator=(Field const &f);

@@ -5,7 +5,7 @@
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Sat Mar 23 01:02:33 2013 ivan ignatiev
-// Last update Sat Mar 23 02:38:06 2013 ivan ignatiev
+// Last update Sat Mar 23 13:06:45 2013 ivan ignatiev
 //
 
 #include "Field.hh"
@@ -46,11 +46,23 @@ Field::~Field(void)
 {
 }
 
+void    Field::empty_matrix(void)
+{
+    for (int i = 0; i < this->width_; ++i)
+    {
+        for (int j = 0; j < this->height_; ++j)
+        {
+            this->matrix_[i][j] = F_EMPTY;
+        }
+    }
+}
+
 void    Field::generate(void)
 {
     std::vector<point_t>::const_iterator snake = this->snake_->get_snake().begin();
     std::vector<point_t>::const_iterator end  = this->snake_->get_snake().end();
 
+    this->empty_matrix();
     for (;snake != end; ++snake)
     {
         this->matrix_[snake->y][snake->x] = snake->type;

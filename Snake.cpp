@@ -5,13 +5,13 @@
 // Login   <alcara_m@epitech.net>
 //
 // Started on  Fri Mar 22 19:52:37 2013 Marin Alcaraz
-// Last update Sat Mar 23 15:16:04 2013 Marin Alcaraz
+// Last update Sun Mar 24 00:33:40 2013 Marin Alcaraz
 //
 
 #include "Snake.hh"
 
 Snake :: Snake(Surface const *surface)
-    : size(4), direction(X_POS), surface_(surface)
+    : size(10), direction(X_POS), surface_(surface)
 {
      std::vector<point_t> b;
      point_t    var;
@@ -20,17 +20,13 @@ Snake :: Snake(Surface const *surface)
      var.y = 1;
      var.type = F_SNAKE_SECT;
      body = b;
-     while(var.x <= 4)
+     while(var.x < this->get_size())
      {
         body.push_back(var);
         var.x++;
      }
      var.type = F_SNAKE_HEAD;
      body.push_back(var);
-     for (int i = 0; i <= 4 ; i++)
-     {
-       std::cout << "Created Snake. X: "<<body[i].x  << " Y: "<< body[i].y  << "type " << body[i].type << std::endl;
-     }
 }
 
 Snake :: Snake(const Snake &obj) : body(obj.body), size(obj.size) {}
@@ -50,31 +46,107 @@ direction_t Snake :: get_direction() const
 bool        Snake :: left(void)
 {
     if ((this->get_direction() == X_POS) || (this->get_direction() == X_NEG))
+    {
+        std::cout << "Set a letf Y_POS current "<< this->get_direction() << std::endl;
         this->set_direction(Y_POS);
+        return (true);
+    }
     if ((this->get_direction() == Y_POS) || (this->get_direction() == Y_NEG))
+    {
+        std::cout << "Set a left X_NEG current "<< this->get_direction() << std::endl;
         this->set_direction(X_NEG);
-    return (true);
+        return (true);
+    }
+    return (false);
 }
 
 bool        Snake :: right(void)
 {
-    if ((this->get_direction() == X_POS) || (this->get_direction() == X_NEG))
+    if (this->get_direction() == X_POS)
+    {
         this->set_direction(Y_NEG);
+        return (true);
+    }
+    if (this->get_direction() == X_NEG)
+    {
+        this->set_direction(Y_NEG);
+        return (true);
+    }
     if ((this->get_direction() == Y_POS) || (this->get_direction() == Y_NEG))
+    {
+        std::cout << "Set a letf X_POS current "<< this->get_direction() << std::endl;
         this->set_direction(X_POS);
+        return (true);
+    }
+    return (false);
+}
+
+bool            Snake :: move_body(void)
+{
+    int         head;
+
+    head = get_size() - 1;
+    for (int i = 0; i <= head - 1; ++i)
+    {
+        body[i] = body[i + 1];
+        body[i].type = F_SNAKE_SECT;
+    }
     return (true);
 }
 
-bool        Snake :: move(void)
+bool            Snake :: colition(point_t head)
 {
-    size_t      i;
-
-    for(i = 0; i <= this->get_size(); i++)
+    for (size_t i = 0; i < this->get_size() ; i++)
     {
-        body[i].x = body[i + 1].x;
-        body[i].y = body[i + 1].y;
-        if (body[this->get_size() - 1].x > this->surface_->get_width() || body[this->get_size() - 1].y > this->surface_->get_height())
-            return (false);
+        if (body[i].x == head.x && body[i].y == head.y)
+          return (true);
+    }
+    return (false);
+}
+
+bool            Snake :: move(void)
+{
+    int         head;
+    point_t     nh;
+
+    head = this->get_size() - 1;
+    nh = body[head];
+    std::cout << body[head].type << std::endl;
+    switch (this->get_direction())
+    {
+      case  X_POS:
+        nh.x++;
+        break;
+      case  Y_POS:
+        nh.y--;
+        break;
+      case  X_NEG:
+        nh.x--;
+        break;
+      case  Y_NEG:
+        nh.y++;
+        break;
+      default:
+        std::cout << "Unhandled position" << std::endl;
+        exit(0);
+    }
+    if (!surface_->check_space(nh))
+      return (false);
+    if (food_->try_eat(nh, this->size))
+    {
+      body[head].type = F_SNAKE_SECT;
+      body.push_back(nh);
+    }
+    else
+    {
+      move_body();
+      if (colition(nh))
+      {
+        std::cout << "Colliton detected exit(0)" << std::endl;
+        exit(0);
+      }
+      body[head] = nh;
+      return (false);
     }
     return (true);
 }
@@ -89,7 +161,7 @@ size_t      Snake :: get_size(void)
     return (this->size);
 }
 
-void        Snake :: set_food(Food const *food)
+void        Snake :: set_food(Food *food)
 {
     this->food_ = food;
 }

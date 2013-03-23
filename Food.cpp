@@ -1,11 +1,11 @@
 //
-// Food.cpp for nibbler in /home/ignatiev/Projects/nibbler
+// Food.cpp for nibbler in /home/hero/nibbler
 //
 // Made by ivan ignatiev
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Sat Mar 23 02:24:06 2013 ivan ignatiev
-// Last update Sat Mar 23 14:17:49 2013 ivan ignatiev
+// Last update Sat Mar 23 21:57:09 2013 Marin Alcaraz
 //
 
 #include "Food.hh"
@@ -17,6 +17,7 @@ Food::Food(void)
 Food::Food(Snake const *snake, Surface const *surface)
     : snake_(snake), surface_(surface)
 {
+  this->gen_food();
 }
 
 Food::Food(const Food &f)
@@ -33,11 +34,15 @@ Food &Food::operator=(const Food &f)
     return (*this);
 }
 
-bool       Food::try_eat(point_t head, size_t &size) const
+bool       Food::try_eat(point_t head, size_t &size)
 {
-    (void) head;
-    (void) size;
+  if (head.x == this->food.x && head.y == this->food.y)
+  {
+    size++;
+    this->gen_food();
     return (true);
+  }
+  return (false);
 }
 
 void       Food::gen_food(void)

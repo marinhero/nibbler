@@ -11,7 +11,8 @@
 #ifndef GRAPHICFACTORY_H_
 # define GRAPHICFACTORY_H_
 
-# include <stdlib.h>
+# include <iostream>
+# include <cstdlib>
 # include <dlfcn.h>
 # include "Game.hh"
 # include "AGraphic.hh"

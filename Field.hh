@@ -5,7 +5,7 @@
 // Login   <alcara_m@epitech.net>
 //
 // Started on  Fri Mar 22 18:55:10 2013 Marin Alcaraz
-// Last update Sat Mar 23 01:15:11 2013 ivan ignatiev
+// Last update Sat Mar 23 01:28:16 2013 ivan ignatiev
 //
 
 #ifndef _FIELD_H
@@ -29,13 +29,13 @@ class Field
 
     Field(void);
     public:
-           Field(Snake const *s, Surface const *sur, Food const *f);
+           Field(Snake const *snake, Surface const *surface, Food const *food);
            Field &operator=(Field const &f);
            Field(Field const &f);
            ~Field(void);
 
            void                 generate(void);
-           field_object_t const **get_field(void) const;
+           field_object_t **get_field(void) const;
 };
 
 #endif

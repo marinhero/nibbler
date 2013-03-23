@@ -34,6 +34,8 @@ typedef struct point_s
   field_object_t    type;
 } point_t;
 
+class Game;
+
 #  include  "Field.hh"
 #  include  "Surface.hh"
 #  include  "Food.hh"
@@ -58,7 +60,7 @@ class Game
     bool            right(void);
     bool            move(void);
     void            quit(void);
-    field_object_t  const **get_field(void) const;
+    field_object_t  **get_field(void) const;
     void            regen_food(void);
     int             get_width() const;
     int             get_height() const;

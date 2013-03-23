@@ -5,7 +5,7 @@
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Fri Mar 22 20:33:45 2013 ivan ignatiev
-// Last update Fri Mar 22 23:05:15 2013 ivan ignatiev
+// Last update Sat Mar 23 02:28:15 2013 ivan ignatiev
 //
 
 #include "Game.hh"
@@ -66,7 +66,7 @@ void    Game::quit(void)
 {
 }
 
-field_object_t const **Game::get_field(void) const
+field_object_t  **Game::get_field(void) const
 {
     return (this->field_->get_field());
 }

@@ -1,11 +1,11 @@
 //
-// Snake.hh for nibbler in /Users/Marin/EPITECH/c++/nibbler
+// Snake.hh for nibbler in /home/ignatiev/Projects/nibbler
 //
 // Made by Marin Alcaraz
 // Login   <alcara_m@epitech.net>
 //
 // Started on  Fri Mar 22 19:00:51 2013 Marin Alcaraz
-// Last update Sat Mar 23 01:05:19 2013 Marin Alcaraz
+// Last update Sat Mar 23 01:37:50 2013 ivan ignatiev
 //
 
 #ifndef _SNAKE_H
@@ -26,8 +26,11 @@ class Snake
     size_t                  size;
     direction_t             direction;
 
+    Surface const           *surface_;
+    Food const              *food_;
+
     public:
-        Snake(Food const *f, Surface const *s);
+        Snake(Surface const *s);
         Snake(const Snake &s);
         ~Snake();
         Snake&                          operator=(const Snake &s);
@@ -38,6 +41,7 @@ class Snake
         size_t                          get_size(void);
         direction_t                     get_direction() const;
         void                            set_direction(direction_t);
+        void                            set_food(Food const *);
 };
 
 #endif

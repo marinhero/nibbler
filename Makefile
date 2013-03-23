@@ -5,20 +5,26 @@
 ## Login   <ignati_i@epitech.net>
 ##
 ## Started on  Fri Mar 22 21:02:41 2013 ivan ignatiev
-## Last update Fri Mar 22 22:49:49 2013 ivan ignatiev
+## Last update Sat Mar 23 02:44:55 2013 ivan ignatiev
 ##
 
 NB_SRC 		= 		Nibbler.cpp \
-					Exception.cpp \
 					Game.cpp \
+					Snake.cpp \
+					Food.cpp \
+					Surface.cpp \
+					Field.cpp \
 					GameThread.cpp \
 					GraphicFactory.cpp
 
-GTK_SRC  	= 		GTKGraphic.cpp
+GTK_SRC  	= 		GTKGraphic.cpp \
+					Game.cpp \
+					AGraphic.cpp
 
 QT_SRC 		=
 
-OGL_SRC 	=
+OGL_SRC 	= 		OpenGLGraphic.cpp \
+					AGraphic.cpp
 
 NB_NAME 	= 		nibbler
 
@@ -30,29 +36,33 @@ QT_NAME 	= 		lib_nibbler_qt.so
 
 RM 			= 		rm -f
 
-CPPFLAGS 	= 		-W -Wextra -Wall
+CPPFLAGS 	+= 		-W -Wextra -Wall
 
 CC 			= 		g++
 
-NB_OBJ 		= 		$(NB_SRC:.c=.o)
+NB_OBJ 		= 		$(NB_SRC:.cpp=.o)
 
-GTK_OBJ  	= 		$(GTK_SRC:.c=.o)
+CPPFLAGS 	+= 		-rdynamic -fPIC
 
-QT_OBJ 		= 		$(QT_SRC:.c=.o)
+GTK_OBJ  	= 		$(GTK_SRC:.cpp=.o)
+
+QT_OBJ 		= 		$(QT_SRC:.cpp=.o)
+
+OGL_OBJ 	= 		$(OGL_SRC:.cpp=.o)
 
 all: 		$(NB_NAME) $(GTK_NAME) $(OGL_NAME) $(QT_NAME)
 
 $(NB_NAME): 	$(NB_OBJ)
-				$(CC) $(NB_OBJ) -o $(NB_NAME)
+				$(CC) $(NB_OBJ) -lpthread -ldl -o $(NB_NAME)
 
 $(GTK_NAME): 	$(GTK_OBJ)
-				$(CC) -rdynamic -fPIC $(GTK_OBJ) -o $(GTK_NAME)
+				$(CC) -shared $(GTK_OBJ) -o $(GTK_NAME)
 
 $(OGL_NAME): 	$(OGL_OBJ)
-				$(CC) -rdynamic -fPIC $(OGL_OBJ) -o $(OGL_NAME)
+				$(CC) -shared $(OGL_OBJ) -o $(OGL_NAME)
 
 $(QT_NAME): 	$(QT_NAME)
-				$(CC) -rdynamic -fPIC $(QT_OBJ) -o $(QT_NAME)
+				$(CC) -shared $(QT_OBJ) -o $(QT_NAME)
 clean:
 				$(RM) 	$(NB_OBJ)
 				$(RM) 	$(GTK_OBJ)

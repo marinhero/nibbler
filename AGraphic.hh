@@ -11,6 +11,8 @@
 #ifndef AGRAPHIC_HH_
 # define AGRAPHIC_HH_
 
+class   AGraphic;
+
 #include "Game.hh"
 
 class   AGraphic

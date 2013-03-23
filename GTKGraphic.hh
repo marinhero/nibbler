@@ -11,6 +11,7 @@
 #ifndef GTKGRAPHIC_H_
 # define GTKGRAPHIC_H_
 
+# include <iostream>
 # include "AGraphic.hh"
 
 class GTKGraphic : public AGraphic

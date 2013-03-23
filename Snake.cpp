@@ -1,17 +1,17 @@
 //
-// Snake.cpp for nibbler in /Users/Marin/EPITECH/c++/nibbler
+// Snake.cpp for nibbler in /home/ignatiev/Projects/nibbler
 //
 // Made by Marin Alcaraz
 // Login   <alcara_m@epitech.net>
 //
 // Started on  Fri Mar 22 19:52:37 2013 Marin Alcaraz
-// Last update Sat Mar 23 01:05:25 2013 Marin Alcaraz
+// Last update Sat Mar 23 02:30:40 2013 ivan ignatiev
 //
 
 #include "Snake.hh"
 
-Snake :: Snake(Food const *f, Surface const *s)
-    : size(4), direction(X_POS)
+Snake :: Snake(Surface const *surface)
+    : size(4), direction(X_POS), surface_(surface)
 {
      std::vector<point_t> b;
      point_t    var;
@@ -50,6 +50,7 @@ bool        Snake :: left(void)
         this->set_direction(Y_POS);
     if ((this->get_direction() == Y_POS) || (this->get_direction() == Y_NEG))
         this->set_direction(X_NEG);
+    return (true);
 }
 
 bool        Snake :: right(void)
@@ -58,6 +59,7 @@ bool        Snake :: right(void)
         this->set_direction(Y_NEG);
     if ((this->get_direction() == Y_POS) || (this->get_direction() == Y_NEG))
         this->set_direction(X_POS);
+    return (true);
 }
 
 bool        Snake :: move(void)
@@ -69,6 +71,7 @@ bool        Snake :: move(void)
         body[i].x = body[i-1].x;
         body[i].y = body[i-1].y;
     }
+    return (true);
 }
 
 std::vector<point_t> const &Snake :: get_snake(void) const
@@ -81,9 +84,7 @@ size_t      Snake :: get_size(void)
     return (this->size);
 }
 
-int         main()
+void        Snake :: set_food(Food const *food)
 {
-    Food *f;
-    Surface *su;
-    Snake s(f, su);
+    this->food_ = food;
 }

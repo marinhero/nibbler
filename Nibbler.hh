@@ -12,6 +12,7 @@
 # define NIBBLER_H_
 
 # include <cstdlib>
+# include <iostream>
 
 # include "Game.hh"
 # include "GraphicFactory.hh"

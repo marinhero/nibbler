@@ -5,7 +5,7 @@
 // Login   <baezse_s@epitech.net>
 //
 // Started on  Fri Mar 22 20:52:43 2013 Sergio Baez
-// Last update Sat Mar 23 17:11:49 2013 Sergio Baez
+// Last update Sat Mar 23 17:13:13 2013 Sergio Baez
 //
 
 # include <GL/freeglut.h>
@@ -80,5 +80,10 @@ void OpenGLGraphic::InitializeGlutCallbacks()
 
 void OpenGLGraphic::refresh(void)
 {
+}
+
+void OpenGLGraphic::wait(void)
+{
+    glutMainLoop();
 }
 

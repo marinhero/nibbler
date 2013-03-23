@@ -14,14 +14,17 @@
 # include <iostream>
 # include <unistd.h>
 
+# include <gtk/gtk.h>
 # include "AGraphic.hh"
 
 class GTKGraphic : public AGraphic
 {
+    GtkWidget   *window_;
     public:
         GTKGraphic(Game *);
         virtual ~GTKGraphic(void);
         virtual void refresh(void);
+        virtual void wait(void);
 };
 
 #endif /* !GTKGRAPHIC_H_ */

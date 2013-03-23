@@ -27,6 +27,7 @@ class   AGraphic
         AGraphic &operator=(AGraphic const &glib);
         virtual         ~AGraphic(void);
         virtual void    refresh(void) = 0;
+        virtual void    wait(void) = 0;
         Game *game(void);
 };
 

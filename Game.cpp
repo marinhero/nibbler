@@ -5,7 +5,7 @@
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Fri Mar 22 20:33:45 2013 ivan ignatiev
-// Last update Sat Mar 23 02:28:15 2013 ivan ignatiev
+// Last update Sat Mar 23 14:20:20 2013 ivan ignatiev
 //
 
 #include "Game.hh"
@@ -28,6 +28,8 @@ Game &Game::operator=(Game const &g)
 Game::Game(int width, int height)
     : width_(width), height_(height)
 {
+    srand(time(NULL));
+
     this->surface_ = new Surface(width, height);
     this->snake_ = new Snake(this->surface_);
     this->food_ = new Food(this->snake_, this->surface_);

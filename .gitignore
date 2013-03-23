@@ -1,0 +1,6 @@
+*.so
+*.so
+*.swp
+.directory
+*.orig
+nibbler

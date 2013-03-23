@@ -5,7 +5,7 @@
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Fri Mar 22 20:17:33 2013 ivan ignatiev
-// Last update Sat Mar 23 02:38:43 2013 ivan ignatiev
+// Last update Sat Mar 23 14:47:28 2013 ivan ignatiev
 //
 
 #include "GameThread.hh"
@@ -56,7 +56,7 @@ void    *GameThread::move_thread(void *attr)
     {
         th->game_->move();
         th->glib_->refresh();
-        usleep(MOVE_INTERVAL);
+        //sleep(MOVE_INTERVAL);
     }
     return (NULL);
 }

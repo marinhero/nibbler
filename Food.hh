@@ -5,20 +5,21 @@
 // Login   <alcara_m@epitech.net>
 //
 // Started on  Fri Mar 22 18:44:11 2013 Marin Alcaraz
-// Last update Sat Mar 23 02:27:16 2013 ivan ignatiev
+// Last update Sat Mar 23 14:20:17 2013 ivan ignatiev
 //
 
 #ifndef _FOOD_HH
 # define _FOOD_HH
 
+# include    <cstdlib>
+
 class   Food;
 
-#include  <cstdlib>
-#include "Game.hh"
-#include "Snake.hh"
-#include "Surface.hh"
+# include    "Game.hh"
+# include    "Snake.hh"
+# include    "Surface.hh"
 
-class Food
+class   Food
 {
     Snake   const   *snake_;
     Surface const   *surface_;

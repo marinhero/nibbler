@@ -5,7 +5,7 @@
 ## Login   <ignati_i@epitech.net>
 ##
 ## Started on  Fri Mar 22 21:02:41 2013 ivan ignatiev
-## Last update Sat Mar 23 03:02:43 2013 ivan ignatiev
+## Last update Sat Mar 23 15:03:50 2013 ivan ignatiev
 ##
 
 NB_SRC 		= 		Nibbler.cpp \
@@ -23,7 +23,11 @@ GTK_SRC  	= 		GTKGraphic.cpp \
 					Snake.cpp \
 					AGraphic.cpp
 
-QT_SRC 		=
+QT_SRC 		= 		QTGraphic.cpp \
+					Game.cpp \
+					Field.cpp \
+					Snake.cpp \
+					AGraphic.cpp
 
 OGL_SRC 	= 		OpenGLGraphic.cpp \
 					Game.cpp \
@@ -65,7 +69,7 @@ $(GTK_NAME): 	$(GTK_OBJ)
 $(OGL_NAME): 	$(OGL_OBJ)
 				$(CC) -shared $(OGL_OBJ) -o $(OGL_NAME)
 
-$(QT_NAME): 	$(QT_NAME)
+$(QT_NAME): 	$(QT_OBJ)
 				$(CC) -shared $(QT_OBJ) -o $(QT_NAME)
 clean:
 				$(RM) 	$(NB_OBJ)

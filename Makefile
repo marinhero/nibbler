@@ -5,7 +5,7 @@
 ## Login   <ignati_i@epitech.net>
 ##
 ## Started on  Fri Mar 22 21:02:41 2013 ivan ignatiev
-## Last update Sat Mar 23 02:44:55 2013 ivan ignatiev
+## Last update Sat Mar 23 02:52:07 2013 ivan ignatiev
 ##
 
 NB_SRC 		= 		Nibbler.cpp \
@@ -24,6 +24,7 @@ GTK_SRC  	= 		GTKGraphic.cpp \
 QT_SRC 		=
 
 OGL_SRC 	= 		OpenGLGraphic.cpp \
+					Game.cpp \
 					AGraphic.cpp
 
 NB_NAME 	= 		nibbler
@@ -37,12 +38,11 @@ QT_NAME 	= 		lib_nibbler_qt.so
 RM 			= 		rm -f
 
 CPPFLAGS 	+= 		-W -Wextra -Wall
+CPPFLAGS 	+= 		-rdynamic -fPIC
 
 CC 			= 		g++
 
 NB_OBJ 		= 		$(NB_SRC:.cpp=.o)
-
-CPPFLAGS 	+= 		-rdynamic -fPIC
 
 GTK_OBJ  	= 		$(GTK_SRC:.cpp=.o)
 

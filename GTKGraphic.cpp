@@ -5,7 +5,7 @@
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Fri Mar 22 19:16:19 2013 ivan ignatiev
-// Last update Sat Mar 23 02:39:53 2013 ivan ignatiev
+// Last update Sat Mar 23 02:50:42 2013 ivan ignatiev
 //
 
 # include "GTKGraphic.hh"
@@ -32,5 +32,27 @@ GTKGraphic::~GTKGraphic(void)
 
 void GTKGraphic::refresh(void)
 {
+    field_object_t **field = this->game()->get_field();
+    int     w   = this->game()->get_width();
+    int     h   = this->game()->get_height();
 
+    for (int i = 0; i < h; ++i)
+    {
+        for (int j = 0; j < w; ++j)
+        {
+            switch(field[i][j])
+            {
+                case F_EMPTY :
+                    std::cout << ".";
+                    break;
+                case F_SNAKE_SECT:
+                    std::cout << "+";
+                    break;
+                case F_SNAKE_HEAD:
+                    std::cout << "@";
+                    break;
+            }
+        }
+        std::cout << std::endl;
+    }
 }

@@ -17,9 +17,15 @@
 # include <gtk/gtk.h>
 # include "AGraphic.hh"
 
+# define CELL_SIZE 20
+
 class GTKGraphic : public AGraphic
 {
-    GtkWidget   *window_;
+    GtkWidget           *window_;
+    GtkWidget           *da_;
+
+    void                clear_surface(void);
+
     public:
         GTKGraphic(Game *);
         virtual ~GTKGraphic(void);

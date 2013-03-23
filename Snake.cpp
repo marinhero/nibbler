@@ -1,11 +1,11 @@
 //
-// Snake.cpp for nibbler in /home/ignatiev/Projects/nibbler
+// Snake.cpp for nibbler in /home/hero/nibbler
 //
 // Made by Marin Alcaraz
 // Login   <alcara_m@epitech.net>
 //
 // Started on  Fri Mar 22 19:52:37 2013 Marin Alcaraz
-// Last update Sat Mar 23 13:04:44 2013 ivan ignatiev
+// Last update Sat Mar 23 14:45:53 2013 Marin Alcaraz
 //
 
 #include "Snake.hh"
@@ -16,17 +16,18 @@ Snake :: Snake(Surface const *surface)
      std::vector<point_t> b;
      point_t    var;
 
-     var.x = 0;
-     var.y = 0;
-     var.type = F_SNAKE_HEAD;
+     var.x = 1;
+     var.y = 1;
+     var.type = F_SNAKE_SECT;
      body = b;
-     while(var.x < 5)
+     while(var.x < 4)
      {
         body.push_back(var);
-        var.type = F_SNAKE_SECT;
         var.x++;
      }
-     std::cout << "Created Snake X: "<< var.x - 1 << " Y: "<< var.y - 1 << " size 4 " << std::endl;
+     var.type = F_SNAKE_HEAD;
+     body.push_back(var);
+     std::cout << "Created Snake. Head on X: "<< var.x  << " Y: "<< var.y  << " size 4 " << std::endl;
 }
 
 Snake :: Snake(const Snake &obj) : body(obj.body), size(obj.size) {}
@@ -63,13 +64,13 @@ bool        Snake :: right(void)
 
 bool        Snake :: move(void)
 {
-    size_t     i;
+    size_t      i;
 
     for(i = 0; i <= this->get_size(); i++)
     {
-        body[i].x = body[i-1].x;
-        body[i].y = body[i-1].y;
-        if (body[0].x > this->surface_->get_width() || body[0].y > this->surface_->get_height())
+        body[i].x = body[i + 1].x;
+        body[i].y = body[i + 1].y;
+        if (body[this->get_size() - 1].x > this->surface_->get_width() || body[this->get_size() - 1].y > this->surface_->get_height())
             return (false);
     }
     return (true);

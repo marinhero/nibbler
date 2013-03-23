@@ -5,7 +5,7 @@
 // Login   <baezse_s@epitech.net>
 //
 // Started on  Fri Mar 22 20:52:43 2013 Sergio Baez
-// Last update Sat Mar 23 02:40:09 2013 ivan ignatiev
+// Last update Sat Mar 23 16:36:57 2013 ivan ignatiev
 //
 
 # include <GL/freeglut.h>
@@ -13,6 +13,7 @@
 
 extern "C" AGraphic     *load_graphic(Game *game)
 {
+
   return (new OpenGLGraphic(game));
 }
 

@@ -5,7 +5,7 @@
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Fri Mar 22 20:17:33 2013 ivan ignatiev
-// Last update Sat Mar 23 14:58:44 2013 ivan ignatiev
+// Last update Sat Mar 23 16:48:57 2013 ivan ignatiev
 //
 
 #include "GameThread.hh"
@@ -44,6 +44,7 @@ void    GameThread::start(void)
 
 void    GameThread::wait(void)
 {
+    this->glib_->wait();
     pthread_join(this->move_hndl_, NULL);
     pthread_join(this->food_hndl_, NULL);
 }

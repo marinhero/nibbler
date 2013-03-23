@@ -5,7 +5,7 @@
 // Login   <alcara_m@epitech.net>
 //
 // Started on  Fri Mar 22 19:52:37 2013 Marin Alcaraz
-// Last update Sat Mar 23 14:59:28 2013 Marin Alcaraz
+// Last update Sat Mar 23 15:16:04 2013 Marin Alcaraz
 //
 
 #include "Snake.hh"
@@ -16,18 +16,21 @@ Snake :: Snake(Surface const *surface)
      std::vector<point_t> b;
      point_t    var;
 
-     var.x = 10;
-     var.y = 10;
+     var.x = 1;
+     var.y = 1;
      var.type = F_SNAKE_SECT;
      body = b;
-     while(var.x < 4)
+     while(var.x <= 4)
      {
         body.push_back(var);
         var.x++;
      }
      var.type = F_SNAKE_HEAD;
      body.push_back(var);
-     std::cout << "Created Snake. Head on X: "<< var.x  << " Y: "<< var.y  << " size 4 " << std::endl;
+     for (int i = 0; i <= 4 ; i++)
+     {
+       std::cout << "Created Snake. X: "<<body[i].x  << " Y: "<< body[i].y  << "type " << body[i].type << std::endl;
+     }
 }
 
 Snake :: Snake(const Snake &obj) : body(obj.body), size(obj.size) {}

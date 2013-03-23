@@ -1,19 +1,22 @@
 //
-// OpenGLGraphic.cpp for nibbler in /home/ignatiev/Projects/nibbler
+// OpenGLGraphic.cpp for nibbler in /home/baezse_s/nibbler
 //
 // Made by Sergio Baez
 // Login   <baezse_s@epitech.net>
 //
 // Started on  Fri Mar 22 20:52:43 2013 Sergio Baez
-// Last update Sat Mar 23 16:53:46 2013 ivan ignatiev
+// Last update Sat Mar 23 17:13:13 2013 Sergio Baez
 //
 
 # include <GL/freeglut.h>
 # include "OpenGLGraphic.hh"
 
+AGraphic                *graph;
+
 extern "C" AGraphic     *load_graphic(Game *game)
 {
-  return (new OpenGLGraphic(game));
+  graph = new OpenGLGraphic(game);
+  return (graph);
 }
 
 extern "C" void         unload_graphic(AGraphic *glib)
@@ -53,18 +56,18 @@ void keyboard(unsigned char key, int x, int y)
   switch(key)
   {
     case GLUT_KEY_LEFT:
-
+      graph->game()->left();
       break;
     case GLUT_KEY_RIGHT:
-      this->game()->right();
+      graph->game()->right();
       break;
     case GLUT_KEY_END:
-      this->game()->quit();
+      graph->game()->quit();
       break;
   }
 }
 
-void OpenGLGraphic::renderSceneCB()
+void renderSceneCB()
 {
   glClear(GL_COLOR_BUFFER_BIT);
   glutSwapBuffers();
@@ -72,7 +75,7 @@ void OpenGLGraphic::renderSceneCB()
 
 void OpenGLGraphic::InitializeGlutCallbacks()
 {
-  glutDisplayFunc(this->renderSceneCB);
+  glutDisplayFunc(renderSceneCB);
 }
 
 void OpenGLGraphic::refresh(void)

@@ -20,11 +20,11 @@ class OpenGLGraphic : public AGraphic
     virtual ~OpenGLGraphic(void);
     virtual void refresh(void);
     virtual void wait(void);
-    void renderSceneCB(void);
     void InitializeGlutCallbacks(void);
 
 };
 
 void keyboard(unsigned char, int, int);
+void renderSceneCB(void);
 
 #endif /* !OPENGLGRAPHIC_HH_ */

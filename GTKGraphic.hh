@@ -15,6 +15,7 @@
 # include <unistd.h>
 
 # include <gtk/gtk.h>
+# include <gdk/gdk.h>
 # include "AGraphic.hh"
 
 # define CELL_SIZE 20
@@ -23,8 +24,10 @@ class GTKGraphic : public AGraphic
 {
     GtkWidget           *window_;
     GtkWidget           *da_;
+    cairo_surface_t     *surface_;
 
     void                clear_surface(void);
+    static gboolean    on_key_press(GtkWidget *widget, GdkEventKey *event, gpointer data);
 
     public:
         GTKGraphic(Game *);

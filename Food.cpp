@@ -5,7 +5,7 @@
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Sat Mar 23 02:24:06 2013 ivan ignatiev
-// Last update Sat Mar 23 02:31:54 2013 ivan ignatiev
+// Last update Sat Mar 23 14:17:49 2013 ivan ignatiev
 //
 
 #include "Food.hh"
@@ -42,6 +42,12 @@ bool       Food::try_eat(point_t head, size_t &size) const
 
 void       Food::gen_food(void)
 {
+    int     w   =       this->surface_->get_width();
+    int     h   =       this->surface_->get_height();
+
+    this->food.x    = rand() % w;
+    this->food.y    = rand() % h;
+    this->food.type = F_FOOD;
 }
 
 point_t  const  *Food::get_food(void) const

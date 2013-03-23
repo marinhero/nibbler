@@ -5,7 +5,7 @@
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Fri Mar 22 19:16:19 2013 ivan ignatiev
-// Last update Sat Mar 23 03:03:41 2013 ivan ignatiev
+// Last update Sat Mar 23 14:47:30 2013 ivan ignatiev
 //
 
 # include "GTKGraphic.hh"
@@ -36,9 +36,11 @@ void GTKGraphic::refresh(void)
     int     w   = this->game()->get_width();
     int     h   = this->game()->get_height();
 
-    for (int i = 0; i < h; ++i)
+    std::cout << "Current position : " << std::endl;
+
+    for (int i = 0; i <= h; ++i)
     {
-        for (int j = 0; j < w; ++j)
+        for (int j = 0; j <= w; ++j)
         {
             switch(field[i][j])
             {
@@ -48,11 +50,35 @@ void GTKGraphic::refresh(void)
                 case F_SNAKE_SECT:
                     std::cout << "+";
                     break;
+                case F_FOOD:
+                    std::cout << "$";
+                    break;
+                case F_WALL:
+                    std::cout << "#";
+                    break;
                 case F_SNAKE_HEAD:
                     std::cout << "@";
                     break;
             }
         }
         std::cout << std::endl;
+    }
+
+    char c;
+    int size = read(1, &c , 1);
+    switch(c)
+    {
+        case 'l':
+            this->game()->left();
+            break;
+        case 'r':
+            this->game()->right();
+            break;
+        case 'q':
+            this->game()->quit();
+            exit(0);
+            break;
+        case 's' :
+            break;
     }
 }

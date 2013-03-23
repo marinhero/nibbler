@@ -12,6 +12,8 @@
 # define GTKGRAPHIC_H_
 
 # include <iostream>
+# include <unistd.h>
+
 # include "AGraphic.hh"
 
 class GTKGraphic : public AGraphic

@@ -11,6 +11,9 @@
 #ifndef GAME_HH_
 #  define GAME_HH_
 
+# include <cstdlib>
+# include <ctime>
+
 typedef enum{
   F_EMPTY = 0,
   F_SNAKE_HEAD,

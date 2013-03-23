@@ -5,7 +5,7 @@
 // Login   <alcara_m@epitech.net>
 //
 // Started on  Fri Mar 22 19:52:37 2013 Marin Alcaraz
-// Last update Sat Mar 23 01:05:25 2013 Marin Alcaraz
+// Last update Sat Mar 23 02:32:26 2013 Marin Alcaraz
 //
 
 #include "Snake.hh"
@@ -60,7 +60,7 @@ bool        Snake :: right(void)
         this->set_direction(X_POS);
 }
 
-bool        Snake :: move(void)
+bool        Snake :: move(void, Surface const *s)
 {
     int     i;
 
@@ -68,7 +68,10 @@ bool        Snake :: move(void)
     {
         body[i].x = body[i-1].x;
         body[i].y = body[i-1].y;
+        if (body[0].x > s->get_width() || body[0].y > s->get_height())
+            return (false);
     }
+    return (true);
 }
 
 std::vector<point_t> const &Snake :: get_snake(void) const

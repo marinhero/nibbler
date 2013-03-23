@@ -5,7 +5,7 @@
 // Login   <alcara_m@epitech.net>
 //
 // Started on  Fri Mar 22 19:00:51 2013 Marin Alcaraz
-// Last update Sat Mar 23 01:05:19 2013 Marin Alcaraz
+// Last update Sat Mar 23 02:33:17 2013 Marin Alcaraz
 //
 
 #ifndef _SNAKE_H
@@ -33,7 +33,7 @@ class Snake
         Snake&                          operator=(const Snake &s);
         bool                            left(void);
         bool                            right(void);
-        bool                            move(void);
+        bool                            move(void, Surface *);
         std::vector<point_t> const      &get_snake(void) const;
         size_t                          get_size(void);
         direction_t                     get_direction() const;

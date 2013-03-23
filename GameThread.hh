@@ -27,8 +27,8 @@ class   GameThread
         pthread_t       move_hndl_;
         pthread_t       food_hndl_;
 
-        void    *move_thread(void *);
-        void    *food_thread(void *);
+        static void    *move_thread(void *);
+        static void    *food_thread(void *);
 
         GameThread(void);
         GameThread(GameThread const &);

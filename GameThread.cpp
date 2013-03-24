@@ -1,11 +1,11 @@
 //
-// GameThread.cpp for nibbler in /home/hero/nibbler
+// GameThread.cpp for nibbler in /home/ignatiev/Projects/nibbler
 //
 // Made by ivan ignatiev
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Fri Mar 22 20:17:33 2013 ivan ignatiev
-// Last update Sun Mar 24 01:14:42 2013 Marin Alcaraz
+// Last update Sun Mar 24 01:47:37 2013 ivan ignatiev
 //
 
 #include "GameThread.hh"
@@ -55,9 +55,8 @@ void    *GameThread::move_thread(void *attr)
 
     while (1)
     {
-        th->game_->move();
-        std::cout << "TEST : " << std::endl;
         th->glib_->refresh();
+        th->game_->move();
         usleep(MOVE_INTERVAL);
     }
     return (NULL);
@@ -69,7 +68,7 @@ void    *GameThread::food_thread(void *attr)
 
     while (1)
     {
-       th->game_->regen_food();
+        //th->game_->regen_food();
         usleep(REGEN_FOOD_INTERVAL);
     }
     return (NULL);

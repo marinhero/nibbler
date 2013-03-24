@@ -5,7 +5,7 @@
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Fri Mar 22 19:16:19 2013 ivan ignatiev
-// Last update Sun Mar 24 00:33:12 2013 ivan ignatiev
+// Last update Sun Mar 24 01:51:17 2013 ivan ignatiev
 //
 
 # include "GTKGraphic.hh"
@@ -68,8 +68,6 @@ void    GTKGraphic::refresh(void)
     int     w   = this->game()->get_width();
     int     h   = this->game()->get_height();
 
-    std::cout << "Current position : " << std::endl;
-    this->clear_surface();
     gdk_threads_enter();
     cairo_t    *cr = cairo_create( this->surface_ );
     cairo_set_source_rgb(cr, 1, 1, 1);
@@ -89,7 +87,6 @@ void    GTKGraphic::refresh(void)
                                         i * CELL_SIZE + CELL_SIZE);
                     cairo_fill(cr);
                     cairo_stroke(cr);
-
                     std::cout << ".";
                     break;
                 case F_SNAKE_SECT:
@@ -100,7 +97,6 @@ void    GTKGraphic::refresh(void)
                                         i * CELL_SIZE + CELL_SIZE);
                     cairo_fill(cr);
                     cairo_stroke(cr);
-
                     std::cout << "+";
                     break;
                 case F_FOOD:
@@ -111,7 +107,6 @@ void    GTKGraphic::refresh(void)
                                         i * CELL_SIZE + CELL_SIZE);
                     cairo_fill(cr);
                     cairo_stroke(cr);
-
                     std::cout << "$";
                     break;
                 case F_WALL:
@@ -122,7 +117,6 @@ void    GTKGraphic::refresh(void)
                                         i * CELL_SIZE + CELL_SIZE);
                     cairo_fill(cr);
                     cairo_stroke(cr);
-
                     std::cout << "#";
                     break;
                 case F_SNAKE_HEAD:
@@ -147,24 +141,6 @@ void    GTKGraphic::refresh(void)
     cairo_set_source_surface(cr, this->surface_, 0, 0);
     cairo_paint(cr);
     gdk_threads_leave();
-    /*char c;
-    read(1, &c , 1);
-    switch(c)
-    {
-        case 'l':
-            this->game()->left();
-            break;
-        case 'r':
-            this->game()->right();
-            break;
-        case 'q':
-            this->game()->quit();
-            exit(0);
-            break;
-        case 's' :
-            break;
-    }
-    read(1, &c, 1);*/
 }
 
 gboolean       GTKGraphic::on_key_press(GtkWidget *widget, GdkEventKey *event, gpointer data)

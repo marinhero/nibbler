@@ -23,6 +23,7 @@
 # include <X11/Xos.h>
 # include <X11/Xatom.h>
 # include <X11/keysym.h>
+# include "Exception.hh"
 
 # define CELL_SIZE 20
 

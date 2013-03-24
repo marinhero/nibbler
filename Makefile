@@ -1,11 +1,12 @@
 ##
 ## Makefile for nibbler in /home/baezse_s/nibbler
+## Makefile for nibbler in /home/baezse_s/nibbler
 ##
 ## Made by ivan ignatiev
 ## Login   <ignati_i@epitech.net>
 ##
 ## Started on  Fri Mar 22 21:02:41 2013 ivan ignatiev
-## Last update Sun Mar 24 21:38:34 2013 Sergio Baez
+## Last update Sun Mar 24 22:04:12 2013 Sergio Baez
 ##
 
 NB_SRC 		= 		Nibbler.cpp \
@@ -27,6 +28,7 @@ GTK_SRC  	= 		GTKGraphic.cpp \
 
 XLIB_SRC 		= 	XlibGraphic.cpp \
 					Game.cpp \
+					Exception.cpp \
 					Field.cpp \
 					Snake.cpp \
 					AGraphic.cpp
@@ -57,7 +59,7 @@ DEBUG_NAME 	= 		lib_nibbler_debug.so
 RM 			= 		rm -f
 
 CPPFLAGS 	+= 		-W -Wextra -Wall
-CPPFLAGS 	+= 		-rdynamic -fPIC -g3
+CPPFLAGS 	+= 		-rdynamic -fPIC
 
 CC 			= 		g++
 

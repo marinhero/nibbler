@@ -5,7 +5,7 @@
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Fri Mar 22 19:16:19 2013 ivan ignatiev
-// Last update Sun Mar 24 10:19:08 2013 Marin Alcaraz
+// Last update Sun Mar 24 10:27:09 2013 Marin Alcaraz
 //
 
 # include "XlibGraphic.hh"
@@ -39,7 +39,9 @@ XlibGraphic::XlibGraphic(Game *game) : AGraphic(game)
       XAllocColor(dis, colormap, &pal[i]);
       XSetForeground(dis, xgc[i], pal[i].pixel);
     }
-	XSelectInput(dis, win, ExposureMask | KeyPressMask | LeaveWindowMask);
+	XSelectInput(dis, win, ExposureMask | KeyPressMask | ButtonPressMask | StructureNotifyMask);
+    Atom wmDelete=XInternAtom(dis, "WM_DELETE_WINDOW", True);
+    XSetWMProtocols(dis, win, &wmDelete, 1);
 }
 
 XlibGraphic::~XlibGraphic(void)

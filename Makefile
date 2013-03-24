@@ -1,11 +1,14 @@
 ##
 ## Makefile for nibbler in /home/hero/nibbler
+=======
+## Makefile for nibbler in /home/baezse_s/nibbler
+>>>>>>> 3b9c94d51891d034bdd27a1f612cec6de87168d9
 ##
 ## Made by ivan ignatiev
 ## Login   <ignati_i@epitech.net>
 ##
 ## Started on  Fri Mar 22 21:02:41 2013 ivan ignatiev
-## Last update Sun Mar 24 09:15:21 2013 Marin Alcaraz
+## Last update Sun Mar 24 16:43:20 2013 Sergio Baez
 ##
 
 NB_SRC 		= 		Nibbler.cpp \
@@ -80,7 +83,7 @@ $(GTK_NAME): 	$(GTK_OBJ)
 				$(CC) -shared $(GTK_OBJ) -o $(GTK_NAME) `pkg-config --libs gtk+-3.0`
 
 $(OGL_NAME): 	$(OGL_OBJ)
-				$(CC) -shared $(OGL_OBJ) -o $(OGL_NAME)
+				$(CC) -shared $(OGL_OBJ) -o $(OGL_NAME) -lglut -lGL -lGLEW
 
 XlibGraphic.o: 	XlibGraphic.cpp
 				$(CC) -I/usr/X11R6/include -c $(CPPFLAGS)  $<  -o $@

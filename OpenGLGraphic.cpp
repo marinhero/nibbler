@@ -5,13 +5,17 @@
 // Login   <baezse_s@epitech.net>
 //
 // Started on  Fri Mar 22 20:52:43 2013 Sergio Baez
-// Last update Sat Mar 23 17:13:13 2013 Sergio Baez
+// Last update Sun Mar 24 16:37:46 2013 Sergio Baez
 //
 
+# include <iostream>
+# include <GL/glew.h>
 # include <GL/freeglut.h>
 # include "OpenGLGraphic.hh"
+# include "math_3d.h"
 
 AGraphic                *graph;
+GLuint                  VBO;
 
 extern "C" AGraphic     *load_graphic(Game *game)
 {
@@ -29,6 +33,7 @@ OpenGLGraphic::OpenGLGraphic(Game *game) : AGraphic(game)
   int   c;
   int   w;
   int   h;
+  GLenum res;
 
   c = 0;
   w = this->game()->get_width();
@@ -37,15 +42,35 @@ OpenGLGraphic::OpenGLGraphic(Game *game) : AGraphic(game)
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
   glutInitWindowSize(w, h);
   glutInitWindowPosition(0,0);
-  glutCreateWindow("Snake");
+  glutCreateWindow("Nibbler");
   glutKeyboardFunc(keyboard);
-
   InitializeGlutCallbacks();
+  res = glewInit();
+  if (res != GLEW_OK)
+  {
+    std::cerr   << "Error"
+                << glewGetErrorString(res)
+                << std::endl;
+    exit(0); //TODO-->exceptions
+  }
   glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+  createVertexBuffer();
 }
 
 OpenGLGraphic::~OpenGLGraphic(void)
 {
+}
+
+void createVertexBuffer()
+{
+  Vector3f  vertices[3];
+
+  vertices[0] = Vector3f(-1.0f, -1.0f, 0.0f);
+  vertices[1] = Vector3f(1.0f, -1.0f, 0.0f);
+  vertices[2] = Vector3f(0.0f, 1.0f, 0.0f);
+  glGenBuffers(1, &VBO);
+  glBindBuffer(GL_ARRAY_BUFFER, VBO);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 }
 
 void keyboard(unsigned char key, int x, int y)

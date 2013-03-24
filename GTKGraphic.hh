@@ -25,9 +25,18 @@ class GTKGraphic : public AGraphic
     GtkWidget           *window_;
     GtkWidget           *da_;
     cairo_surface_t     *surface_;
+    cairo_t             *cr_;
+    int                 width_;
+    int                 height_;
+    int                 pix_width_;
+    int                 pix_height_;
 
     void                clear_surface(void);
-    static gboolean    on_key_press(GtkWidget *widget, GdkEventKey *event, gpointer data);
+    static gboolean     on_key_press(GtkWidget *widget, GdkEventKey *event, gpointer data);
+    void                destroy_cairo(void);
+    void                prepare_cairo(void);
+    void                cairo_color(double r, double g, double b);
+    void                draw_rect(int x1, int y1, int x2, int y2);
 
     public:
         GTKGraphic(Game *);

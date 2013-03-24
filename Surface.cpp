@@ -1,11 +1,11 @@
 //
-// Surface.cpp for nibbler in /home/hero/nibbler
+// Surface.cpp for nibbler in /home/ignatiev/Projects/nibbler
 //
 // Made by ivan ignatiev
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Sat Mar 23 02:32:13 2013 ivan ignatiev
-// Last update Sun Mar 24 03:55:22 2013 Marin Alcaraz
+// Last update Sun Mar 24 16:10:04 2013 ivan ignatiev
 //
 
 #include "Surface.hh"
@@ -37,9 +37,9 @@ Surface &Surface::operator=(Surface const &s)
 
 bool Surface::check_space(point_t const &p) const
 {
-    if (p.x > this->get_width() || p.x < 0)
+    if (p.x >= this->get_width() || p.x < 1)
       return (false);
-    if (p.y > this->get_height() || p.y < 0)
+    if (p.y >= this->get_height() || p.y < 1)
       return (false);
     return (true);
 }

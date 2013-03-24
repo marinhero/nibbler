@@ -5,7 +5,7 @@
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Fri Mar 22 19:16:19 2013 ivan ignatiev
-// Last update Sun Mar 24 18:00:32 2013 ivan ignatiev
+// Last update Sun Mar 24 19:07:42 2013 ivan ignatiev
 //
 
 # include "GTKGraphic.hh"
@@ -29,8 +29,9 @@ GTKGraphic::GTKGraphic(Game *game) : AGraphic(game)
     this->window_ = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_window_set_title(GTK_WINDOW(this->window_), "Nibbler");
 
-    g_signal_connect(this->window_, "destroy", G_CALLBACK(gtk_main_quit), NULL);
+    g_signal_connect(this->window_, "destroy", G_CALLBACK(GTKGraphic::on_window_close), NULL);
     g_signal_connect(this->window_, "key_press_event", G_CALLBACK(GTKGraphic::on_key_press), this);
+
     this->width_        = game->get_width();
     this->height_       = game->get_height();
     this->pix_width_    = this->width_ * CELL_SIZE + CELL_SIZE;
@@ -153,5 +154,12 @@ gboolean       GTKGraphic::on_key_press(GtkWidget *widget, GdkEventKey *event, g
                 break;
     }
 
+    return (TRUE);
+}
+
+gboolean       GTKGraphic::on_window_close()
+{
+    gtk_main_quit();
+    throw (new LibraryException("Game window closed!"));
     return (TRUE);
 }

@@ -33,6 +33,7 @@ class GTKGraphic : public AGraphic
 
     void                clear_surface(void);
     static gboolean     on_key_press(GtkWidget *widget, GdkEventKey *event, gpointer data);
+    static gboolean     on_window_close(void);
     void                destroy_cairo(void);
     void                prepare_cairo(void);
     void                cairo_color(double r, double g, double b);

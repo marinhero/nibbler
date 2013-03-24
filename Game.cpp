@@ -1,11 +1,11 @@
 //
-// Game.cpp for nibbler in /home/ignatiev/Projects/nibbler
+// Game.cpp for nibbler in /home/hero/nibbler
 //
 // Made by ivan ignatiev
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Fri Mar 22 20:33:45 2013 ivan ignatiev
-// Last update Sat Mar 23 15:20:01 2013 ivan ignatiev
+// Last update Sat Mar 23 18:17:58 2013 Marin Alcaraz
 //
 
 #include "Game.hh"

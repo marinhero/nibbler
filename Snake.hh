@@ -1,11 +1,11 @@
 //
-// Snake.hh for nibbler in /home/ignatiev/Projects/nibbler
+// Snake.hh for nibbler in /home/hero/nibbler
 //
 // Made by Marin Alcaraz
 // Login   <alcara_m@epitech.net>
 //
 // Started on  Fri Mar 22 19:00:51 2013 Marin Alcaraz
-// Last update Sat Mar 23 02:56:38 2013 ivan ignatiev
+// Last update Sat Mar 23 23:57:18 2013 Marin Alcaraz
 //
 
 #ifndef _SNAKE_H
@@ -27,7 +27,7 @@ class Snake
     direction_t             direction;
 
     Surface const           *surface_;
-    Food const              *food_;
+    Food               *food_;
 
     public:
         Snake(Surface const *s);
@@ -37,11 +37,13 @@ class Snake
         bool                            left(void);
         bool                            right(void);
         bool                            move(void);
+        bool                            colition(point_t);
+        bool                            move_body(void);
         std::vector<point_t> const      &get_snake(void) const;
         size_t                          get_size(void);
         direction_t                     get_direction() const;
         void                            set_direction(direction_t);
-        void                            set_food(Food const *);
+        void                            set_food(Food *);
 };
 
 #endif

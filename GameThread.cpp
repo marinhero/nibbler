@@ -1,11 +1,11 @@
 //
-// GameThread.cpp for nibbler in /home/ignatiev/Projects/nibbler
+// GameThread.cpp for nibbler in /home/hero/nibbler
 //
 // Made by ivan ignatiev
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Fri Mar 22 20:17:33 2013 ivan ignatiev
-// Last update Sat Mar 23 16:48:57 2013 ivan ignatiev
+// Last update Sun Mar 24 01:14:42 2013 Marin Alcaraz
 //
 
 #include "GameThread.hh"
@@ -69,7 +69,7 @@ void    *GameThread::food_thread(void *attr)
 
     while (1)
     {
-        th->game_->regen_food();
+       th->game_->regen_food();
         usleep(REGEN_FOOD_INTERVAL);
     }
     return (NULL);

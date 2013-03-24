@@ -1,11 +1,11 @@
 ##
-## Makefile for nibbler in /home/ignatiev/Projects/nibbler
+## Makefile for nibbler in /home/baezse_s/nibbler
 ##
 ## Made by ivan ignatiev
 ## Login   <ignati_i@epitech.net>
 ##
 ## Started on  Fri Mar 22 21:02:41 2013 ivan ignatiev
-## Last update Sat Mar 23 16:23:19 2013 ivan ignatiev
+## Last update Sun Mar 24 16:05:55 2013 Sergio Baez
 ##
 
 NB_SRC 		= 		Nibbler.cpp \
@@ -70,7 +70,7 @@ $(GTK_NAME): 	$(GTK_OBJ)
 				$(CC) -shared $(GTK_OBJ) -o $(GTK_NAME) `pkg-config --libs gtk+-3.0`
 
 $(OGL_NAME): 	$(OGL_OBJ)
-				$(CC) -shared $(OGL_OBJ) -o $(OGL_NAME)
+				$(CC) -shared $(OGL_OBJ) -o $(OGL_NAME) -lglut -lGL -lGLEW
 
 $(QT_NAME): 	$(QT_OBJ)
 				$(CC) -shared $(QT_OBJ) -o $(QT_NAME)

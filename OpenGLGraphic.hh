@@ -26,5 +26,6 @@ class OpenGLGraphic : public AGraphic
 
 void keyboard(unsigned char, int, int);
 void renderSceneCB(void);
+void createVertexBuffer();
 
 #endif /* !OPENGLGRAPHIC_HH_ */

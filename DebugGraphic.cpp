@@ -1,18 +1,18 @@
 //
-// QTGraphic.cpp for nibbler in /home/ignatiev/Projects/nibbler
+// DebugGraphic.cpp for nibbler in /home/hero/nibbler
 //
 // Made by ivan ignatiev
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Fri Mar 22 19:16:19 2013 ivan ignatiev
-// Last update Sat Mar 23 16:57:19 2013 ivan ignatiev
+// Last update Sun Mar 24 09:16:14 2013 Marin Alcaraz
 //
 
-# include "QTGraphic.hh"
+# include "DebugGraphic.hh"
 
 extern "C" AGraphic *load_graphic(Game *game)
 {
-    return (new QTGraphic(game));
+    return (new DebugGraphic(game));
 }
 
 extern "C" void     unload_graphic(AGraphic *glib)
@@ -20,17 +20,17 @@ extern "C" void     unload_graphic(AGraphic *glib)
     delete glib;
 }
 
-QTGraphic::QTGraphic(Game *game) : AGraphic(game)
+DebugGraphic::DebugGraphic(Game *game) : AGraphic(game)
 {
 
 }
 
-QTGraphic::~QTGraphic(void)
+DebugGraphic::~DebugGraphic(void)
 {
 
 }
 
-void QTGraphic::refresh(void)
+void DebugGraphic::refresh(void)
 {
     field_object_t **field = this->game()->get_field();
     int     w   = this->game()->get_width();
@@ -84,7 +84,7 @@ void QTGraphic::refresh(void)
     read(1, &c, 1);
 }
 
-void QTGraphic::wait(void)
+void DebugGraphic::wait(void)
 {
 
 }

@@ -1,5 +1,5 @@
 /*
-** QTGraphic.h for nibbler in /home/ignatiev/Projects/nibbler
+** DebugGraphic.h for nibbler in /home/ignatiev/Projects/nibbler
 **
 ** Made by ivan ignatiev
 ** Login   <ignati_i@epitech.net>
@@ -8,21 +8,21 @@
 ** Last update Fri Mar 22 19:13:33 2013 ivan ignatiev
 */
 
-#ifndef QTGRAPHIC_H_
-# define QTGRAPHIC_H_
+#ifndef DGRAPHIC_H_
+# define DGRAPHIC_H_
 
 # include <iostream>
 # include <unistd.h>
 
 # include "AGraphic.hh"
 
-class QTGraphic : public AGraphic
+class DebugGraphic : public AGraphic
 {
     public:
-        QTGraphic(Game *);
-        virtual ~QTGraphic(void);
+        DebugGraphic(Game *);
+        virtual ~DebugGraphic(void);
         virtual void refresh(void);
         virtual void wait(void);
 };
 
-#endif /* !QTGRAPHIC_H_ */
+#endif /* DGRAPHIC_H_ */

@@ -19,6 +19,12 @@ class OpenGLGraphic : public AGraphic
     OpenGLGraphic(Game *);
     virtual ~OpenGLGraphic(void);
     virtual void refresh(void);
+    virtual void wait(void);
+    void InitializeGlutCallbacks(void);
+
 };
+
+void keyboard(unsigned char, int, int);
+void renderSceneCB(void);
 
 #endif /* !OPENGLGRAPHIC_HH_ */

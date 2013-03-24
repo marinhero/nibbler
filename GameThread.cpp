@@ -5,7 +5,7 @@
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Fri Mar 22 20:17:33 2013 ivan ignatiev
-// Last update Sat Mar 23 21:55:40 2013 Marin Alcaraz
+// Last update Sun Mar 24 01:14:42 2013 Marin Alcaraz
 //
 
 #include "GameThread.hh"
@@ -44,6 +44,7 @@ void    GameThread::start(void)
 
 void    GameThread::wait(void)
 {
+    this->glib_->wait();
     pthread_join(this->move_hndl_, NULL);
     pthread_join(this->food_hndl_, NULL);
 }
@@ -64,11 +65,11 @@ void    *GameThread::move_thread(void *attr)
 
 void    *GameThread::food_thread(void *attr)
 {
-//    GameThread *th = static_cast<GameThread*>(attr);
+    GameThread *th = static_cast<GameThread*>(attr);
 
     while (1)
     {
-        //th->game_->regen_food();
+       th->game_->regen_food();
         usleep(REGEN_FOOD_INTERVAL);
     }
     return (NULL);

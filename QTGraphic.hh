@@ -22,6 +22,7 @@ class QTGraphic : public AGraphic
         QTGraphic(Game *);
         virtual ~QTGraphic(void);
         virtual void refresh(void);
+        virtual void wait(void);
 };
 
 #endif /* !QTGRAPHIC_H_ */

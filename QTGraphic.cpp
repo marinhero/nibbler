@@ -5,7 +5,7 @@
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Fri Mar 22 19:16:19 2013 ivan ignatiev
-// Last update Sat Mar 23 15:02:06 2013 ivan ignatiev
+// Last update Sat Mar 23 16:57:19 2013 ivan ignatiev
 //
 
 # include "QTGraphic.hh"
@@ -82,4 +82,9 @@ void QTGraphic::refresh(void)
             break;
     }
     read(1, &c, 1);
+}
+
+void QTGraphic::wait(void)
+{
+
 }

@@ -1,19 +1,22 @@
 //
-// OpenGLGraphic.cpp for nibbler in /home/ignatiev/Projects/nibbler
+// OpenGLGraphic.cpp for nibbler in /home/baezse_s/nibbler
 //
 // Made by Sergio Baez
 // Login   <baezse_s@epitech.net>
 //
 // Started on  Fri Mar 22 20:52:43 2013 Sergio Baez
-// Last update Sat Mar 23 02:40:09 2013 ivan ignatiev
+// Last update Sat Mar 23 17:13:13 2013 Sergio Baez
 //
 
 # include <GL/freeglut.h>
 # include "OpenGLGraphic.hh"
 
+AGraphic                *graph;
+
 extern "C" AGraphic     *load_graphic(Game *game)
 {
-  return (new OpenGLGraphic(game));
+  graph = new OpenGLGraphic(game);
+  return (graph);
 }
 
 extern "C" void         unload_graphic(AGraphic *glib)
@@ -24,11 +27,15 @@ extern "C" void         unload_graphic(AGraphic *glib)
 OpenGLGraphic::OpenGLGraphic(Game *game) : AGraphic(game)
 {
   int   c;
+  int   w;
+  int   h;
 
   c = 0;
+  w = this->game()->get_width();
+  h = this->game()->get_height();
   glutInit(&c, NULL);
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
-  glutInitWindowSize(this->game()->get_width(), this->game()->get_height());
+  glutInitWindowSize(w, h);
   glutInitWindowPosition(0,0);
   glutCreateWindow("Snake");
   glutKeyboardFunc(keyboard);
@@ -41,34 +48,42 @@ OpenGLGraphic::~OpenGLGraphic(void)
 {
 }
 
-void keyboard(unsigned char key)
+void keyboard(unsigned char key, int x, int y)
 {
+  (void)x;
+  (void)y;
+
   switch(key)
   {
     case GLUT_KEY_LEFT:
-      this->game()->left();
+      graph->game()->left();
       break;
     case GLUT_KEY_RIGHT:
-      this->game()->right();
+      graph->game()->right();
       break;
     case GLUT_KEY_END:
-      this->game()->quit();
+      graph->game()->quit();
       break;
   }
 }
 
-static void RenderSceneCB()
+void renderSceneCB()
 {
   glClear(GL_COLOR_BUFFER_BIT);
   glutSwapBuffers();
 }
 
-static void InitializeGlutCallbacks()
+void OpenGLGraphic::InitializeGlutCallbacks()
 {
-  glutDisplayFunc(RenderSceneCB);
+  glutDisplayFunc(renderSceneCB);
 }
 
 void OpenGLGraphic::refresh(void)
 {
+}
+
+void OpenGLGraphic::wait(void)
+{
+    glutMainLoop();
 }
 

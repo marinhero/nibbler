@@ -5,7 +5,7 @@
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Fri Mar 22 19:16:19 2013 ivan ignatiev
-// Last update Sat Mar 23 14:58:11 2013 ivan ignatiev
+// Last update Sat Mar 23 16:48:03 2013 ivan ignatiev
 //
 
 # include "GTKGraphic.hh"
@@ -22,12 +22,22 @@ extern "C" void     unload_graphic(AGraphic *glib)
 
 GTKGraphic::GTKGraphic(Game *game) : AGraphic(game)
 {
-
+    int     c = 0;
+    gtk_init(&c, NULL);
+    this->window_ = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    gtk_window_set_title(GTK_WINDOW(this->window_), "Nibbler");
+    g_signal_connect(this->window_, "destroy", G_CALLBACK(gtk_main_quit), NULL);
+    gtk_widget_show(this->window_);
 }
 
 GTKGraphic::~GTKGraphic(void)
 {
 
+}
+
+void GTKGraphic::wait(void)
+{
+    gtk_main();
 }
 
 void GTKGraphic::refresh(void)
@@ -64,7 +74,7 @@ void GTKGraphic::refresh(void)
         std::cout << std::endl;
     }
 
-    char c;
+    /*char c;
     read(1, &c , 1);
     switch(c)
     {
@@ -81,5 +91,5 @@ void GTKGraphic::refresh(void)
         case 's' :
             break;
     }
-    read(1, &c, 1);
+    read(1, &c, 1);*/
 }

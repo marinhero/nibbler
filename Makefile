@@ -5,7 +5,7 @@
 ## Login   <ignati_i@epitech.net>
 ##
 ## Started on  Fri Mar 22 21:02:41 2013 ivan ignatiev
-## Last update Sat Mar 23 15:03:50 2013 ivan ignatiev
+## Last update Sat Mar 23 16:23:19 2013 ivan ignatiev
 ##
 
 NB_SRC 		= 		Nibbler.cpp \
@@ -63,8 +63,11 @@ all: 		$(NB_NAME) $(GTK_NAME) $(OGL_NAME) $(QT_NAME)
 $(NB_NAME): 	$(NB_OBJ)
 				$(CC) $(NB_OBJ) -lpthread -ldl -o $(NB_NAME)
 
+GTKGraphic.o: 	GTKGraphic.cpp
+				$(CC) -c $(CPPFLAGS) `pkg-config --cflags gtk+-3.0` $<  -o $@
+
 $(GTK_NAME): 	$(GTK_OBJ)
-				$(CC) -shared $(GTK_OBJ) -o $(GTK_NAME)
+				$(CC) -shared $(GTK_OBJ) -o $(GTK_NAME) `pkg-config --libs gtk+-3.0`
 
 $(OGL_NAME): 	$(OGL_OBJ)
 				$(CC) -shared $(OGL_OBJ) -o $(OGL_NAME)

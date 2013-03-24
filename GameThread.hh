@@ -17,8 +17,8 @@
 # include "Game.hh"
 # include "AGraphic.hh"
 
-# define  MOVE_INTERVAL     250000
-# define  REGEN_FOOD_INTERVAL 1000000
+# define  MOVE_INTERVAL     200000
+# define  REGEN_FOOD_INTERVAL 20000000
 
 class   GameThread
 {

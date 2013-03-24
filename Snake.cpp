@@ -1,17 +1,17 @@
 //
-// Snake.cpp for nibbler in /home/hero/nibbler
+// Snake.cpp for nibbler in /home/ignatiev/Projects/nibbler
 //
 // Made by Marin Alcaraz
 // Login   <alcara_m@epitech.net>
 //
 // Started on  Fri Mar 22 19:52:37 2013 Marin Alcaraz
-// Last update Sun Mar 24 00:33:40 2013 Marin Alcaraz
+// Last update Sun Mar 24 15:31:32 2013 ivan ignatiev
 //
 
 #include "Snake.hh"
 
 Snake :: Snake(Surface const *surface)
-    : size(10), direction(X_POS), surface_(surface)
+    : size(4), direction(X_POS), surface_(surface)
 {
      std::vector<point_t> b;
      point_t    var;
@@ -20,7 +20,7 @@ Snake :: Snake(Surface const *surface)
      var.y = 1;
      var.type = F_SNAKE_SECT;
      body = b;
-     while(var.x < this->get_size())
+     while(var.x < 4)
      {
         body.push_back(var);
         var.x++;
@@ -45,15 +45,18 @@ direction_t Snake :: get_direction() const
 
 bool        Snake :: left(void)
 {
-    if ((this->get_direction() == X_POS) || (this->get_direction() == X_NEG))
+    if ((this->get_direction() == X_POS))
     {
-        std::cout << "Set a letf Y_POS current "<< this->get_direction() << std::endl;
         this->set_direction(Y_POS);
+        return (true);
+    }
+    if ((this->get_direction() == X_NEG))
+    {
+        this->set_direction(Y_NEG);
         return (true);
     }
     if ((this->get_direction() == Y_POS) || (this->get_direction() == Y_NEG))
     {
-        std::cout << "Set a left X_NEG current "<< this->get_direction() << std::endl;
         this->set_direction(X_NEG);
         return (true);
     }
@@ -69,12 +72,11 @@ bool        Snake :: right(void)
     }
     if (this->get_direction() == X_NEG)
     {
-        this->set_direction(Y_NEG);
+        this->set_direction(Y_POS);
         return (true);
     }
     if ((this->get_direction() == Y_POS) || (this->get_direction() == Y_NEG))
     {
-        std::cout << "Set a letf X_POS current "<< this->get_direction() << std::endl;
         this->set_direction(X_POS);
         return (true);
     }
@@ -94,11 +96,14 @@ bool            Snake :: move_body(void)
     return (true);
 }
 
-bool            Snake :: colition(point_t head)
+bool            Snake :: colition(point_t head) const
 {
-    for (size_t i = 0; i < this->get_size() ; i++)
+    std::vector<point_t>::const_iterator it = this->body.begin();
+    std::vector<point_t>::const_iterator snake_end = this->body.end();
+
+    for (; it != snake_end; ++it)
     {
-        if (body[i].x == head.x && body[i].y == head.y)
+        if (it->x == head.x && it->y == head.y)
           return (true);
     }
     return (false);
@@ -111,43 +116,24 @@ bool            Snake :: move(void)
 
     head = this->get_size() - 1;
     nh = body[head];
-    std::cout << body[head].type << std::endl;
     switch (this->get_direction())
     {
-      case  X_POS:
-        nh.x++;
-        break;
-      case  Y_POS:
-        nh.y--;
-        break;
-      case  X_NEG:
-        nh.x--;
-        break;
-      case  Y_NEG:
-        nh.y++;
-        break;
-      default:
-        std::cout << "Unhandled position" << std::endl;
-        exit(0);
+      case  X_POS: nh.x++; break;
+      case  Y_POS: nh.y--; break;
+      case  X_NEG: nh.x--; break;
+      case  Y_NEG: nh.y++; break;
+      default: return (false);
     }
-    if (!surface_->check_space(nh))
+    if (!surface_->check_space(nh) || colition(nh))
       return (false);
     if (food_->try_eat(nh, this->size))
     {
       body[head].type = F_SNAKE_SECT;
       body.push_back(nh);
+      return (true);
     }
-    else
-    {
-      move_body();
-      if (colition(nh))
-      {
-        std::cout << "Colliton detected exit(0)" << std::endl;
-        exit(0);
-      }
-      body[head] = nh;
-      return (false);
-    }
+    move_body();
+    body[head] = nh;
     return (true);
 }
 

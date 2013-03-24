@@ -5,7 +5,7 @@
 ## Login   <ignati_i@epitech.net>
 ##
 ## Started on  Fri Mar 22 21:02:41 2013 ivan ignatiev
-## Last update Sun Mar 24 16:05:55 2013 Sergio Baez
+## Last update Sun Mar 24 16:43:20 2013 Sergio Baez
 ##
 
 NB_SRC 		= 		Nibbler.cpp \
@@ -64,7 +64,7 @@ $(NB_NAME): 	$(NB_OBJ)
 				$(CC) $(NB_OBJ) -lpthread -ldl -o $(NB_NAME)
 
 GTKGraphic.o: 	GTKGraphic.cpp
-				$(CC) -c $(CPPFLAGS) `pkg-config --cflags gtk+-3.0` $<  -o $@
+				$(CC) -DGDK_DISABLE_DEPRECATION_WARNINGS -c $(CPPFLAGS) `pkg-config --cflags gtk+-3.0` $<  -o $@
 
 $(GTK_NAME): 	$(GTK_OBJ)
 				$(CC) -shared $(GTK_OBJ) -o $(GTK_NAME) `pkg-config --libs gtk+-3.0`

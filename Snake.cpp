@@ -1,11 +1,11 @@
 //
-// Snake.cpp for nibbler in /home/hero/nibbler
+// Snake.cpp for nibbler in /home/ignatiev/Projects/nibbler
 //
 // Made by Marin Alcaraz
 // Login   <alcara_m@epitech.net>
 //
 // Started on  Fri Mar 22 19:52:37 2013 Marin Alcaraz
-// Last update Sun Mar 24 04:34:08 2013 Marin Alcaraz
+// Last update Sun Mar 24 15:31:32 2013 ivan ignatiev
 //
 
 #include "Snake.hh"
@@ -96,11 +96,14 @@ bool            Snake :: move_body(void)
     return (true);
 }
 
-bool            Snake :: colition(point_t head)
+bool            Snake :: colition(point_t head) const
 {
-    for (size_t i = 0; i < this->get_size() ; i++)
+    std::vector<point_t>::const_iterator it = this->body.begin();
+    std::vector<point_t>::const_iterator snake_end = this->body.end();
+
+    for (; it != snake_end; ++it)
     {
-        if (body[i].x == head.x && body[i].y == head.y)
+        if (it->x == head.x && it->y == head.y)
           return (true);
     }
     return (false);
@@ -113,30 +116,24 @@ bool            Snake :: move(void)
 
     head = this->get_size() - 1;
     nh = body[head];
-    std::cout << body[head].type << std::endl;
     switch (this->get_direction())
     {
       case  X_POS: nh.x++; break;
       case  Y_POS: nh.y--; break;
       case  X_NEG: nh.x--; break;
       case  Y_NEG: nh.y++; break;
-      default: return (true);
+      default: return (false);
     }
-    if (!surface_->check_space(nh))
+    if (!surface_->check_space(nh) || colition(nh))
       return (false);
     if (food_->try_eat(nh, this->size))
     {
       body[head].type = F_SNAKE_SECT;
       body.push_back(nh);
+      return (true);
     }
-    else
-    {
-      move_body();
-      if (colition(nh))
-        return(true);
-      body[head] = nh;
-      return (false);
-    }
+    move_body();
+    body[head] = nh;
     return (true);
 }
 

@@ -1,11 +1,11 @@
 //
-// Game.cpp for nibbler in /home/hero/nibbler
+// Game.cpp for nibbler in /home/ignatiev/Projects/nibbler
 //
 // Made by ivan ignatiev
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Fri Mar 22 20:33:45 2013 ivan ignatiev
-// Last update Sat Mar 23 18:17:58 2013 Marin Alcaraz
+// Last update Sun Mar 24 15:22:01 2013 ivan ignatiev
 //
 
 #include "Game.hh"
@@ -66,6 +66,7 @@ bool    Game::move(void)
 
 void    Game::quit(void)
 {
+    exit(0);
 }
 
 field_object_t  **Game::get_field(void) const

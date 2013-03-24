@@ -1,11 +1,11 @@
 //
-// Snake.hh for nibbler in /home/hero/nibbler
+// Snake.hh for nibbler in /home/ignatiev/Projects/nibbler
 //
 // Made by Marin Alcaraz
 // Login   <alcara_m@epitech.net>
 //
 // Started on  Fri Mar 22 19:00:51 2013 Marin Alcaraz
-// Last update Sun Mar 24 04:07:10 2013 Marin Alcaraz
+// Last update Sun Mar 24 15:16:16 2013 ivan ignatiev
 //
 
 #ifndef _SNAKE_H
@@ -39,7 +39,7 @@ class Snake
         bool                            left(void);
         bool                            right(void);
         bool                            move(void);
-        bool                            colition(point_t);
+        bool                            colition(point_t) const;
         bool                            move_body(void);
         size_t                          get_size(void);
         void                            set_direction(direction_t);

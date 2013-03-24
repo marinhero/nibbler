@@ -5,7 +5,7 @@
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Fri Mar 22 19:16:19 2013 ivan ignatiev
-// Last update Sun Mar 24 02:17:04 2013 ivan ignatiev
+// Last update Sun Mar 24 15:22:10 2013 ivan ignatiev
 //
 
 # include "GTKGraphic.hh"
@@ -137,6 +137,7 @@ gboolean       GTKGraphic::on_key_press(GtkWidget *widget, GdkEventKey *event, g
 {
     AGraphic *th    = static_cast<AGraphic*>(data);
 
+    (void) widget;
     switch(event->keyval)
     {
         case    GDK_KEY_Left:
@@ -147,7 +148,6 @@ gboolean       GTKGraphic::on_key_press(GtkWidget *widget, GdkEventKey *event, g
                 break;
         case    GDK_KEY_Escape:
                 th->game()->quit();
-                exit(0);
                 break;
     }
 

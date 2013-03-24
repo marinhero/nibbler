@@ -1,11 +1,11 @@
 ##
-## Makefile for nibbler in /home/ignatiev/Projects/nibbler
+## Makefile for nibbler in /home/hero/nibbler
 ##
 ## Made by ivan ignatiev
 ## Login   <ignati_i@epitech.net>
 ##
 ## Started on  Fri Mar 22 21:02:41 2013 ivan ignatiev
-## Last update Sun Mar 24 15:04:44 2013 ivan ignatiev
+## Last update Sun Mar 24 09:15:21 2013 Marin Alcaraz
 ##
 
 NB_SRC 		= 		Nibbler.cpp \
@@ -23,7 +23,7 @@ GTK_SRC  	= 		GTKGraphic.cpp \
 					Snake.cpp \
 					AGraphic.cpp
 
-QT_SRC 		= 		QTGraphic.cpp \
+XLIB_SRC 		= 	XlibGraphic.cpp \
 					Game.cpp \
 					Field.cpp \
 					Snake.cpp \
@@ -35,13 +35,21 @@ OGL_SRC 	= 		OpenGLGraphic.cpp \
 					Snake.cpp \
 					AGraphic.cpp
 
+DEBUG_SRC 		= 	DebugGraphic.cpp \
+					Game.cpp \
+					Field.cpp \
+					Snake.cpp \
+					AGraphic.cpp
+
 NB_NAME 	= 		nibbler
 
 GTK_NAME 	= 		lib_nibbler_gtkpp.so
 
 OGL_NAME 	= 		lib_nibbler_opengl.so
 
-QT_NAME 	= 		lib_nibbler_qt.so
+XLIB_NAME 	= 		lib_nibbler_xlib.so
+
+DEBUG_NAME 	= 		lib_nibbler_debug.so
 
 RM 			= 		rm -f
 
@@ -54,9 +62,11 @@ NB_OBJ 		= 		$(NB_SRC:.cpp=.o)
 
 GTK_OBJ  	= 		$(GTK_SRC:.cpp=.o)
 
-QT_OBJ 		= 		$(QT_SRC:.cpp=.o)
+XLIB_OBJ 	= 		$(XLIB_SRC:.cpp=.o)
 
 OGL_OBJ 	= 		$(OGL_SRC:.cpp=.o)
+
+DEBUG_OBJ 	= 		$(DEBUG_SRC:.cpp=.o)
 
 all: 		$(NB_NAME) $(GTK_NAME) $(OGL_NAME) $(QT_NAME)
 
@@ -72,18 +82,26 @@ $(GTK_NAME): 	$(GTK_OBJ)
 $(OGL_NAME): 	$(OGL_OBJ)
 				$(CC) -shared $(OGL_OBJ) -o $(OGL_NAME)
 
-$(QT_NAME): 	$(QT_OBJ)
-				$(CC) -shared $(QT_OBJ) -o $(QT_NAME)
+XlibGraphic.o: 	XlibGraphic.cpp
+				$(CC) -I/usr/X11R6/include -c $(CPPFLAGS)  $<  -o $@
+
+$(XLIB_NAME): 	$(XLIB_OBJ)
+				$(CC) -shared $(XLIB_OBJ) -o $(XLIB_NAME) -lX11 -L/usr/X11R6/lib
+
+$(DEBUG_NAME): 	$(DEBUG_OBJ)
+				$(CC) -shared $(DEBUG_OBJ) -o $(DEBUG_NAME)
 clean:
 				$(RM) 	$(NB_OBJ)
 				$(RM) 	$(GTK_OBJ)
-				$(RM) 	$(QT_OBJ)
+				$(RM) 	$(XLIB_OBJ)
+				$(RM) 	$(DEBUG_OBJ)
 				$(RM) 	$(OGL_OBJ)
 
 fclean: 	clean
 			$(RM) 	$(NB_NAME)
 			$(RM) 	$(GTK_NAME)
-			$(RM) 	$(QT_NAME)
+			$(RM) 	$(XLIB_NAME)
+			$(RM) 	$(DEBUG_NAME)
 			$(RM) 	$(OGL_NAME)
 
 re: 		fclean all

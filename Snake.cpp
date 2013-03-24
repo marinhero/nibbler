@@ -5,13 +5,13 @@
 // Login   <alcara_m@epitech.net>
 //
 // Started on  Fri Mar 22 19:52:37 2013 Marin Alcaraz
-// Last update Sun Mar 24 00:33:40 2013 Marin Alcaraz
+// Last update Sun Mar 24 04:34:08 2013 Marin Alcaraz
 //
 
 #include "Snake.hh"
 
 Snake :: Snake(Surface const *surface)
-    : size(10), direction(X_POS), surface_(surface)
+    : size(4), direction(X_POS), surface_(surface)
 {
      std::vector<point_t> b;
      point_t    var;
@@ -20,7 +20,7 @@ Snake :: Snake(Surface const *surface)
      var.y = 1;
      var.type = F_SNAKE_SECT;
      body = b;
-     while(var.x < this->get_size())
+     while(var.x < 4)
      {
         body.push_back(var);
         var.x++;
@@ -45,15 +45,18 @@ direction_t Snake :: get_direction() const
 
 bool        Snake :: left(void)
 {
-    if ((this->get_direction() == X_POS) || (this->get_direction() == X_NEG))
+    if ((this->get_direction() == X_POS))
     {
-        std::cout << "Set a letf Y_POS current "<< this->get_direction() << std::endl;
         this->set_direction(Y_POS);
+        return (true);
+    }
+    if ((this->get_direction() == X_NEG))
+    {
+        this->set_direction(Y_NEG);
         return (true);
     }
     if ((this->get_direction() == Y_POS) || (this->get_direction() == Y_NEG))
     {
-        std::cout << "Set a left X_NEG current "<< this->get_direction() << std::endl;
         this->set_direction(X_NEG);
         return (true);
     }
@@ -69,12 +72,11 @@ bool        Snake :: right(void)
     }
     if (this->get_direction() == X_NEG)
     {
-        this->set_direction(Y_NEG);
+        this->set_direction(Y_POS);
         return (true);
     }
     if ((this->get_direction() == Y_POS) || (this->get_direction() == Y_NEG))
     {
-        std::cout << "Set a letf X_POS current "<< this->get_direction() << std::endl;
         this->set_direction(X_POS);
         return (true);
     }
@@ -114,21 +116,11 @@ bool            Snake :: move(void)
     std::cout << body[head].type << std::endl;
     switch (this->get_direction())
     {
-      case  X_POS:
-        nh.x++;
-        break;
-      case  Y_POS:
-        nh.y--;
-        break;
-      case  X_NEG:
-        nh.x--;
-        break;
-      case  Y_NEG:
-        nh.y++;
-        break;
-      default:
-        std::cout << "Unhandled position" << std::endl;
-        exit(0);
+      case  X_POS: nh.x++; break;
+      case  Y_POS: nh.y--; break;
+      case  X_NEG: nh.x--; break;
+      case  Y_NEG: nh.y++; break;
+      default: return (true);
     }
     if (!surface_->check_space(nh))
       return (false);
@@ -141,10 +133,7 @@ bool            Snake :: move(void)
     {
       move_body();
       if (colition(nh))
-      {
-        std::cout << "Colliton detected exit(0)" << std::endl;
-        exit(0);
-      }
+        return(true);
       body[head] = nh;
       return (false);
     }

@@ -1,11 +1,11 @@
 //
-// Exception.hh for nibbler in /Users/sabs231/Documents/EPITECH/Classes/C++/Projects/Nibbler/nibbler
+// Exception.hh for nibbler in /home/hero/nibbler
 //
 // Made by Marin Alcaraz
 // Login   <alcara_m@epitech.net>
 //
 // Started on  Fri Feb 15 11:25:55 2013 Marin Alcaraz
-// Last update Fri Mar 22 18:33:51 2013 sergioandres baezserrano
+// Last update Sun Mar 24 04:07:15 2013 Marin Alcaraz
 //
 
 #ifndef EXCEPTION_HH_
@@ -24,95 +24,11 @@ class Exception : public std::exception
     ~Exception() throw();
 };
 
-class OverflowException : public Exception
+class SelfHitException : public Exception
 {
   public:
-    OverflowException(const std::string & msg) throw();
-    ~OverflowException() throw();
-};
-
-class ExitInstException : public Exception
-{
-  public:
-    ExitInstException(const std::string & msg) throw();
-    ~ExitInstException() throw();
-};
-
-class BadParameterException : public Exception
-{
-  public:
-    BadParameterException(const std::string & msg) throw();
-    ~BadParameterException() throw();
-};
-
-class InstNotExistException : public Exception
-{
-  public:
-    InstNotExistException(const std::string & msg) throw();
-    ~InstNotExistException() throw();
-};
-
-class OpNotExistException : public Exception
-{
-  public:
-    OpNotExistException(const std::string & msg) throw();
-    ~OpNotExistException() throw();
-};
-
-class DivisionByZeroException : public Exception
-{
-  public:
-    DivisionByZeroException(const std::string & msg) throw();
-    ~DivisionByZeroException() throw();
-};
-
-class SyntaxErrorException : public Exception
-{
-  public:
-   SyntaxErrorException(const std::string & msg, int ln) throw();
-    ~SyntaxErrorException() throw();
-};
-
-class FileException : public Exception
-{
-  public:
-   FileException(const std::string & msg) throw();
-    ~FileException() throw();
-};
-
-class StackException : public Exception
-{
-  public:
-    StackException(const std::string & msg) throw();
-    ~StackException() throw();
-};
-
-class WrongParameterException : public Exception
-{
-  public:
-    WrongParameterException(const std::string & msg) throw();
-    ~WrongParameterException() throw();
-};
-
-class PrintErrorException : public Exception
-{
-  public:
-    PrintErrorException(const std::string & msg) throw();
-    ~PrintErrorException() throw();
-};
-
-class ExitProgramException : public Exception
-{
-  public:
-    ExitProgramException(const std::string & msg) throw();
-    ~ExitProgramException() throw();
-};
-
-class AssertException : public Exception
-{
-  public:
-    AssertException(const std::string & msg) throw();
-    ~AssertException() throw();
+    SelfHitException(const std::string & msg) throw();
+    ~SelfHitException() throw();
 };
 
 #endif

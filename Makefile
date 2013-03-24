@@ -1,11 +1,11 @@
 ##
-## Makefile for nibbler in /home/ignatiev/Projects/nibbler
+## Makefile for nibbler in /home/hero/nibbler
 ##
 ## Made by ivan ignatiev
 ## Login   <ignati_i@epitech.net>
 ##
 ## Started on  Fri Mar 22 21:02:41 2013 ivan ignatiev
-## Last update Sun Mar 24 18:29:14 2013 ivan ignatiev
+## Last update Sun Mar 24 10:04:19 2013 Marin Alcaraz
 ##
 
 NB_SRC 		= 		Nibbler.cpp \
@@ -27,6 +27,7 @@ GTK_SRC  	= 		GTKGraphic.cpp \
 
 XLIB_SRC 		= 	XlibGraphic.cpp \
 					Game.cpp \
+					Exception.cpp \
 					Field.cpp \
 					Snake.cpp \
 					AGraphic.cpp

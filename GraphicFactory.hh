@@ -11,11 +11,13 @@
 #ifndef GRAPHICFACTORY_H_
 # define GRAPHICFACTORY_H_
 
-# include <iostream>
 # include <cstdlib>
 # include <dlfcn.h>
+# include <string>
+
 # include "Game.hh"
 # include "AGraphic.hh"
+# include "Exception.hh"
 
 # define LOAD_FUNC_SYM      "load_graphic"
 # define UNLOAD_FUNC_SYM    "unload_graphic"

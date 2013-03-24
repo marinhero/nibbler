@@ -14,8 +14,11 @@
 # include <iostream>
 # include <pthread.h>
 # include <unistd.h>
+# include <exception>
+
 # include "Game.hh"
 # include "AGraphic.hh"
+# include "Exception.hh"
 
 # define  MOVE_INTERVAL     200000
 # define  REGEN_FOOD_INTERVAL 20000000

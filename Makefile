@@ -5,10 +5,11 @@
 ## Login   <ignati_i@epitech.net>
 ##
 ## Started on  Fri Mar 22 21:02:41 2013 ivan ignatiev
-## Last update Sun Mar 24 15:04:44 2013 ivan ignatiev
+## Last update Sun Mar 24 16:59:56 2013 ivan ignatiev
 ##
 
 NB_SRC 		= 		Nibbler.cpp \
+					Exception.cpp \
 					Game.cpp \
 					Snake.cpp \
 					Food.cpp \
@@ -18,6 +19,7 @@ NB_SRC 		= 		Nibbler.cpp \
 					GraphicFactory.cpp
 
 GTK_SRC  	= 		GTKGraphic.cpp \
+					Exception.cpp \
 					Game.cpp \
 					Field.cpp \
 					Snake.cpp \
@@ -30,6 +32,7 @@ QT_SRC 		= 		QTGraphic.cpp \
 					AGraphic.cpp
 
 OGL_SRC 	= 		OpenGLGraphic.cpp \
+					Exception.cpp \
 					Game.cpp \
 					Field.cpp \
 					Snake.cpp \

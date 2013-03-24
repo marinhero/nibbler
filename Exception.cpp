@@ -11,24 +11,35 @@
 #include "Exception.hh"
 #include <iostream>
 
-Exception::SnakeException(const std::string & msg) throw() : message(msg)
+Exception::Exception(const std::string & msg) throw() : message(msg)
 {
 }
 
-Exception::~SnakeException() throw()
+Exception::~Exception(void) throw()
 {
 }
 
-const char *    Exception::what() const throw()
+const char *    Exception::what(void) const throw()
 {
   return (this->message.data());
 }
 
-SelfHitException::SelfHitException(const std::string & msg) throw()
-  : Exception(std::string("Self Hit Exception: ") + msg)
-{
-}
+LibraryException::LibraryException(const std::string & msg) throw() : Exception(msg) {}
 
-SelfHitException::~SelfHitException() throw()
-{
-}
+LibraryException::~LibraryException(void) throw() {}
+
+ThreadException::ThreadException(const std::string & msg) throw() : Exception(msg) {}
+
+ThreadException::~ThreadException(void) throw() {}
+
+ArgsException::ArgsException(const std::string & msg) throw() : Exception(msg) {}
+
+ArgsException::~ArgsException(void) throw() {}
+
+GameException::GameException(const std::string & msg) throw() : Exception(msg) {}
+
+GameException::~GameException(void) throw() {}
+
+
+
+

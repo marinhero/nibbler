@@ -5,7 +5,7 @@
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Sat Mar 23 01:02:33 2013 ivan ignatiev
-// Last update Sun Mar 24 16:02:18 2013 ivan ignatiev
+// Last update Sun Mar 24 18:10:02 2013 ivan ignatiev
 //
 
 #include "Field.hh"
@@ -52,7 +52,7 @@ void    Field::empty_matrix(void)
     {
         for (int j = 0; j <= this->height_; ++j)
         {
-            if (j == 0 || i == 0 || i == this->width_ || j == this->height_)
+            if (j == 0 || i == 0 || j == this->width_ || i == this->height_)
                 this->matrix_[i][j] = F_WALL;
             else
                 this->matrix_[i][j] = F_EMPTY;

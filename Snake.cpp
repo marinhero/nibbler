@@ -5,7 +5,7 @@
 // Login   <alcara_m@epitech.net>
 //
 // Started on  Fri Mar 22 19:52:37 2013 Marin Alcaraz
-// Last update Sun Mar 24 15:31:32 2013 ivan ignatiev
+// Last update Sun Mar 24 18:13:19 2013 ivan ignatiev
 //
 
 #include "Snake.hh"
@@ -124,7 +124,7 @@ bool            Snake :: move(void)
       case  Y_NEG: nh.y++; break;
       default: return (false);
     }
-    if (!surface_->check_space(nh) || colition(nh))
+    if (!surface_->check_space(body[head]) || colition(nh))
       return (false);
     if (food_->try_eat(nh, this->size))
     {

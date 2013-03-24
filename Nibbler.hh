@@ -13,9 +13,11 @@
 
 # include <cstdlib>
 # include <iostream>
+# include <exception>
 
 # include "Game.hh"
 # include "GraphicFactory.hh"
 # include "GameThread.hh"
+# include "Exception.hh"
 
 #endif /* !NIBBLER_H_ */

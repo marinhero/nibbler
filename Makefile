@@ -1,11 +1,11 @@
 ##
-## Makefile for nibbler in /home/ignatiev/Projects/nibbler
+## Makefile for nibbler in /home/baezse_s/nibbler
 ##
 ## Made by ivan ignatiev
 ## Login   <ignati_i@epitech.net>
 ##
 ## Started on  Fri Mar 22 21:02:41 2013 ivan ignatiev
-## Last update Sun Mar 24 18:29:14 2013 ivan ignatiev
+## Last update Sun Mar 24 19:06:21 2013 Sergio Baez
 ##
 
 NB_SRC 		= 		Nibbler.cpp \
@@ -57,7 +57,7 @@ DEBUG_NAME 	= 		lib_nibbler_debug.so
 RM 			= 		rm -f
 
 CPPFLAGS 	+= 		-W -Wextra -Wall
-CPPFLAGS 	+= 		-rdynamic -fPIC
+CPPFLAGS 	+= 		-rdynamic -fPIC -g3
 
 CC 			= 		g++
 

@@ -5,7 +5,7 @@
 ## Login   <ignati_i@epitech.net>
 ##
 ## Started on  Fri Mar 22 21:02:41 2013 ivan ignatiev
-## Last update Sun Mar 24 16:43:20 2013 Sergio Baez
+## Last update Sun Mar 24 18:51:54 2013 Sergio Baez
 ##
 
 NB_SRC 		= 		Nibbler.cpp \
@@ -46,7 +46,7 @@ QT_NAME 	= 		lib_nibbler_qt.so
 RM 			= 		rm -f
 
 CPPFLAGS 	+= 		-W -Wextra -Wall
-CPPFLAGS 	+= 		-rdynamic -fPIC
+CPPFLAGS 	+= 		-rdynamic -fPIC -g3
 
 CC 			= 		g++
 

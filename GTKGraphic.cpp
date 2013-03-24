@@ -5,7 +5,7 @@
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Fri Mar 22 19:16:19 2013 ivan ignatiev
-// Last update Sun Mar 24 01:51:17 2013 ivan ignatiev
+// Last update Sun Mar 24 02:17:04 2013 ivan ignatiev
 //
 
 # include "GTKGraphic.hh"
@@ -41,16 +41,10 @@ GTKGraphic::GTKGraphic(Game *game) : AGraphic(game)
     gtk_container_add(GTK_CONTAINER(this->window_), this->da_);
     gtk_widget_show_all(this->window_);
 
-    this->surface_ = gdk_window_create_similar_surface( gtk_widget_get_window(this->da_),
-                                                        CAIRO_CONTENT_COLOR,
-                                                        gtk_widget_get_allocated_width(this->da_),
-                                                        gtk_widget_get_allocated_height(this->da_));
-
 }
 
 GTKGraphic::~GTKGraphic(void)
 {
-    cairo_surface_destroy(this->surface_);
 }
 
 void    GTKGraphic::clear_surface(void)
@@ -69,10 +63,10 @@ void    GTKGraphic::refresh(void)
     int     h   = this->game()->get_height();
 
     gdk_threads_enter();
+    this->surface_ = cairo_image_surface_create(CAIRO_FORMAT_ARGB32, w * CELL_SIZE, h * CELL_SIZE);
     cairo_t    *cr = cairo_create( this->surface_ );
     cairo_set_source_rgb(cr, 1, 1, 1);
     cairo_paint(cr);
-
     for (int i = 0; i <= h; ++i)
     {
         for (int j = 0; j <= w; ++j)
@@ -87,7 +81,6 @@ void    GTKGraphic::refresh(void)
                                         i * CELL_SIZE + CELL_SIZE);
                     cairo_fill(cr);
                     cairo_stroke(cr);
-                    std::cout << ".";
                     break;
                 case F_SNAKE_SECT:
                     cairo_set_source_rgb(cr, 1, 0.5, 1);
@@ -97,7 +90,6 @@ void    GTKGraphic::refresh(void)
                                         i * CELL_SIZE + CELL_SIZE);
                     cairo_fill(cr);
                     cairo_stroke(cr);
-                    std::cout << "+";
                     break;
                 case F_FOOD:
                     cairo_set_source_rgb(cr, 1, 0.5, 0.4);
@@ -107,7 +99,6 @@ void    GTKGraphic::refresh(void)
                                         i * CELL_SIZE + CELL_SIZE);
                     cairo_fill(cr);
                     cairo_stroke(cr);
-                    std::cout << "$";
                     break;
                 case F_WALL:
                     cairo_set_source_rgb(cr, 0.5, 1, 0.4);
@@ -117,7 +108,6 @@ void    GTKGraphic::refresh(void)
                                         i * CELL_SIZE + CELL_SIZE);
                     cairo_fill(cr);
                     cairo_stroke(cr);
-                    std::cout << "#";
                     break;
                 case F_SNAKE_HEAD:
                     cairo_set_source_rgb(cr, 0.5, 0.5, 1);
@@ -127,11 +117,9 @@ void    GTKGraphic::refresh(void)
                                         i * CELL_SIZE + CELL_SIZE);
                     cairo_fill(cr);
                     cairo_stroke(cr);
-                    std::cout << "@";
                     break;
             }
         }
-        std::cout << std::endl;
     }
 
     cairo_set_source_surface(cr, this->surface_, 0, 0);
@@ -140,6 +128,8 @@ void    GTKGraphic::refresh(void)
     cr = gdk_cairo_create( gtk_widget_get_window (this->da_));
     cairo_set_source_surface(cr, this->surface_, 0, 0);
     cairo_paint(cr);
+    cairo_destroy(cr);
+    cairo_surface_destroy(this->surface_);
     gdk_threads_leave();
 }
 

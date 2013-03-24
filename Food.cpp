@@ -1,11 +1,11 @@
 //
-// Food.cpp for nibbler in /home/hero/nibbler
+// Food.cpp for nibbler in /home/ignatiev/Projects/nibbler
 //
 // Made by ivan ignatiev
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Sat Mar 23 02:24:06 2013 ivan ignatiev
-// Last update Sat Mar 23 21:57:09 2013 Marin Alcaraz
+// Last update Sun Mar 24 02:14:42 2013 ivan ignatiev
 //
 
 #include "Food.hh"
@@ -50,8 +50,8 @@ void       Food::gen_food(void)
     int     w   =       this->surface_->get_width();
     int     h   =       this->surface_->get_height();
 
-    this->food.x    = rand() % w;
-    this->food.y    = rand() % h;
+    this->food.x    = rand() % w + 1;
+    this->food.y    = rand() % h + 1;
     this->food.type = F_FOOD;
 }
 

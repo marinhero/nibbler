@@ -40,6 +40,8 @@ GameException::GameException(const std::string & msg) throw() : Exception(msg) {
 
 GameException::~GameException(void) throw() {}
 
+WindowException::WindowException(const std::string & msg) throw() : Exception(msg) {}
 
+WindowException::~WindowException(void) throw() {}
 
 

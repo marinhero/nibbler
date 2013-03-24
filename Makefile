@@ -5,7 +5,7 @@
 ## Login   <ignati_i@epitech.net>
 ##
 ## Started on  Fri Mar 22 21:02:41 2013 ivan ignatiev
-## Last update Sun Mar 24 19:06:21 2013 Sergio Baez
+## Last update Sun Mar 24 21:38:34 2013 Sergio Baez
 ##
 
 NB_SRC 		= 		Nibbler.cpp \
@@ -83,7 +83,7 @@ $(GTK_NAME): 	$(GTK_OBJ)
 				$(CC) -shared $(GTK_OBJ) -o $(GTK_NAME) `pkg-config --libs gtk+-3.0`
 
 $(OGL_NAME): 	$(OGL_OBJ)
-				$(CC) -shared $(OGL_OBJ) -o $(OGL_NAME) -lglut -lGL -lGLEW
+				$(CC) -shared $(OGL_OBJ) -o $(OGL_NAME) -lglut -lGL -lGLU
 
 XlibGraphic.o: 	XlibGraphic.cpp
 				$(CC) -I/usr/X11R6/include -c $(CPPFLAGS)  $<  -o $@

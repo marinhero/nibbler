@@ -12,25 +12,26 @@
 # define OPENGLGRAPHIC_HH_
 
 # include "AGraphic.hh"
-# define CELL_SIZE 0.2f
+# define CELL_SIZE 20
 
 class OpenGLGraphic : public AGraphic
 {
     int                 width_;
     int                 height_;
+    int                 pix_width_;
+    int                 pix_height_;
 
   public:
     OpenGLGraphic(Game *);
     virtual ~OpenGLGraphic(void);
     virtual void refresh(void);
     virtual void wait(void);
-    void InitializeGlutCallbacks(void);
-    void draw_rect(int x1, int y1, int x2, int y2);
+    void draw_rect(float x1, float y1, float x2, float y2);
 
 };
 
-void keyboard(unsigned char, int, int);
-void renderSceneCB(void);
+void keyboard(int, int, int);
 void render(void);
+void idle(void);
 
 #endif /* !OPENGLGRAPHIC_HH_ */

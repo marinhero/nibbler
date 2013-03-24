@@ -5,17 +5,17 @@
 // Login   <baezse_s@epitech.net>
 //
 // Started on  Fri Mar 22 20:52:43 2013 Sergio Baez
-// Last update Sun Mar 24 19:03:21 2013 Sergio Baez
+// Last update Sun Mar 24 22:01:48 2013 Sergio Baez
 //
 
 # include <iostream>
 # include <GL/glew.h>
 # include <GL/freeglut.h>
 # include "OpenGLGraphic.hh"
+# include "Exception.hh"
 # include "math_3d.h"
 
 AGraphic                *graph;
-GLuint                  VBO;
 
 extern "C" AGraphic     *load_graphic(Game *game)
 {
@@ -33,45 +33,39 @@ OpenGLGraphic::OpenGLGraphic(Game *game) : AGraphic(game)
   int   c;
   int   w;
   int   h;
-  GLenum res;
 
   c = 0;
   w = this->game()->get_width();
   h = this->game()->get_height();
+  this->pix_width_ = w * CELL_SIZE + CELL_SIZE;
+  this->pix_height_ = h * CELL_SIZE + CELL_SIZE;
   this->width_ = this->game()->get_width();
   this->height_ = this->game()->get_height();
   glutInit(&c, NULL);
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
-  glutInitWindowSize(w, h);
+  glutInitWindowSize(this->pix_width_, this->pix_height_);
   glutInitWindowPosition(0,0);
   glutCreateWindow("Nibbler");
-  glutKeyboardFunc(keyboard);
-  InitializeGlutCallbacks();
-  res = glewInit();
-  if (res != GLEW_OK)
-  {
-    std::cerr   << "Error"
-                << glewGetErrorString(res)
-                << std::endl;
-    exit(0); //TODO-->exceptions
-  }
+  glViewport(0, 0, this->pix_width_, this->pix_height_);
+  glMatrixMode(GL_PROJECTION);
+  glLoadIdentity();
+  gluOrtho2D(0, this->pix_width_, 0, this->pix_height_);
   glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+  glutSpecialFunc(keyboard);
+  glutIdleFunc(idle);
+  glutDisplayFunc(render);
 }
 
 OpenGLGraphic::~OpenGLGraphic(void)
 {
 }
 
-void OpenGLGraphic::draw_rect(int x1, int y1, int x2, int y2)
+void OpenGLGraphic::draw_rect(float x1, float y1, float x2, float y2)
 {
-  glRectf(x1, y1, x2, y2);
+  glRectf(x1, this->pix_height_ - y1, x2, this->pix_height_ - y2);
 }
 
-void render(void)
-{
-}
-
-void keyboard(unsigned char key, int x, int y)
+void keyboard(int key, int x, int y)
 {
   (void)x;
   (void)y;
@@ -84,21 +78,15 @@ void keyboard(unsigned char key, int x, int y)
     case GLUT_KEY_RIGHT:
       graph->game()->right();
       break;
-    case GLUT_KEY_END:
+    case 27:
       graph->game()->quit();
       break;
   }
 }
 
-void renderSceneCB()
+void idle(void)
 {
-  glClear(GL_COLOR_BUFFER_BIT);
-  glutSwapBuffers();
-}
-
-void OpenGLGraphic::InitializeGlutCallbacks()
-{
-  glutDisplayFunc(renderSceneCB);
+  glutPostRedisplay();
 }
 
 void OpenGLGraphic::refresh(void)
@@ -109,8 +97,7 @@ void OpenGLGraphic::refresh(void)
   int     y1;
   int     y2;
 
-  if (glutGetWindowData() == NULL)
-    std::cout << "algo" << std::endl;
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   for (int i = 0; i <= this->height_; i++)
   {
     for (int j = 0; j <= this->width_; j++)
@@ -122,33 +109,32 @@ void OpenGLGraphic::refresh(void)
       switch(field[i][j])
       {
         case F_EMPTY:
-          glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-          glColor3f(0.0f, 0.5f, 0.0f);
+          glColor3f(0.1f, 0.9f, 0.1f);
           this->draw_rect(x1, y1, x2, y2);
           break;
         case F_SNAKE_SECT:
-          glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
           glColor3f(0.5f, 0.5f, 0.5f);
           this->draw_rect(x1, y1, x2, y2);
           break;
         case F_FOOD:
-          glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
           glColor3f(0.5f, 0.5f, 1.0f);
-          this->draw_rect(x1, y1,1.0, y2);
+          this->draw_rect(x1, y1, x2, y2);
           break;
         case F_WALL:
-          glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
           glColor3f(0.0f, 0.0f, 0.0f);
           this->draw_rect(x1, y1, x2, y2);
           break;
         case F_SNAKE_HEAD:
-          glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
           glColor3f(1.0f, 0.2f, 0.2f);
           this->draw_rect(x1, y1, x2, y2);
           break;
       }
     }
   }
+}
+
+void render(void)
+{
   glutSwapBuffers();
 }
 

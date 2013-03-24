@@ -1,11 +1,11 @@
 //
-// Exception.hh for nibbler in /home/ignatiev/Projects/nibbler
+// Exception.hh for nibbler in /home/baezse_s/nibbler
 //
 // Made by Marin Alcaraz
 // Login   <alcara_m@epitech.net>
 //
 // Started on  Fri Feb 15 11:25:55 2013 Marin Alcaraz
-// Last update Sun Mar 24 17:29:39 2013 ivan ignatiev
+// Last update Sun Mar 24 19:14:42 2013 Sergio Baez
 //
 
 #ifndef EXCEPTION_HH_
@@ -52,4 +52,10 @@ class GameException : public Exception
     virtual ~GameException(void) throw();
 };
 
+class WindowException : public Exception
+{
+  public:
+    WindowException(const std::string & msg) throw();
+    virtual ~WindowException(void) throw();
+};
 #endif

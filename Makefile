@@ -1,14 +1,11 @@
 ##
 ## Makefile for nibbler in /home/ignatiev/Projects/nibbler
-=======
-## Makefile for nibbler in /home/baezse_s/nibbler
->>>>>>> 3b9c94d51891d034bdd27a1f612cec6de87168d9
 ##
 ## Made by ivan ignatiev
 ## Login   <ignati_i@epitech.net>
 ##
 ## Started on  Fri Mar 22 21:02:41 2013 ivan ignatiev
-## Last update Sun Mar 24 16:59:56 2013 ivan ignatiev
+## Last update Sun Mar 24 18:29:14 2013 ivan ignatiev
 ##
 
 NB_SRC 		= 		Nibbler.cpp \

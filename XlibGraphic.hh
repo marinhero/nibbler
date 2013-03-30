@@ -27,6 +27,7 @@
 
 # define CELL_SIZE 20
 
+char                colors[5][8] = {"#00FF00", "#FFFFFF", "#FF0000", "#FFAA00", "#00C9FF"};
 
 class XlibGraphic : public AGraphic
 {
@@ -34,7 +35,6 @@ class XlibGraphic : public AGraphic
     int                 height_;
     int                 pix_width_;
     int                 pix_height_;
-    char                *colors[5];
     Display             *dis;
     Window              win;
     XEvent              report;
@@ -46,10 +46,8 @@ class XlibGraphic : public AGraphic
     public:
         XlibGraphic(Game *);
         virtual ~XlibGraphic(void);
-
         virtual void                refresh(void);
         virtual void                wait(void);
-        void                        init_colors(void);
 };
 
 #endif /* !XLIBGRAPHIC_H_ */

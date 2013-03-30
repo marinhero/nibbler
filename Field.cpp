@@ -1,11 +1,11 @@
 //
-// Field.cpp for nibbler in /home/ignatiev/Projects/nibbler
+// Field.cpp for nibbler-2016-alcara_m in /home/ignati_i/projects/nibbler-2016-alcara_m
 //
 // Made by ivan ignatiev
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Sat Mar 23 01:02:33 2013 ivan ignatiev
-// Last update Sun Mar 24 18:10:02 2013 ivan ignatiev
+// Last update Sun Mar 24 22:20:27 2013 ivan ignatiev
 //
 
 #include "Field.hh"
@@ -21,10 +21,10 @@ Field::Field(Snake const *snake, Surface const *surface, Food const *food)
     this->width_ = surface->get_width();
     this->height_ = surface->get_height();
     this->matrix_ = new field_object_t * [this->height_ + 1];
-    for (int i = 0; i <= this->width_; ++i)
+    for (int i = 0; i <= this->height_; ++i)
     {
         this->matrix_[i] = new field_object_t[this->width_ + 1];
-        for (int j = 0; j <= this->height_; ++j)
+        for (int j = 0; j <= this->width_; ++j)
         {
             this->matrix_[i][j] = F_EMPTY;
         }
@@ -48,9 +48,9 @@ Field::~Field(void)
 
 void    Field::empty_matrix(void)
 {
-    for (int i = 0; i <= this->width_; ++i)
+    for (int i = 0; i <= this->height_; ++i)
     {
-        for (int j = 0; j <= this->height_; ++j)
+        for (int j = 0; j <= this->width_; ++j)
         {
             if (j == 0 || i == 0 || j == this->width_ || i == this->height_)
                 this->matrix_[i][j] = F_WALL;

@@ -1,11 +1,11 @@
 //
-// XLibGraphic.cpp for nibbler in /home/hero/nibbler
+// XlibGraphic.cpp for nibbler-2016-alcara_m in /home/hero/nibbler-2016-alcara_m
 //
 // Made by ivan ignatiev
 // Login   <ignati_i@epitech.net>
 //
 // Started on  Fri Mar 22 19:16:19 2013 ivan ignatiev
-// Last update Sun Mar 24 10:27:09 2013 Marin Alcaraz
+// Last update Sun Mar 24 22:42:19 2013 Marin Alcaraz
 //
 
 # include "XlibGraphic.hh"
@@ -26,7 +26,6 @@ XlibGraphic::XlibGraphic(Game *game) : AGraphic(game)
     this->height_       = game->get_height();
     this->pix_width_    = this->width_ * CELL_SIZE + CELL_SIZE;
     this->pix_height_   = this->height_ * CELL_SIZE + CELL_SIZE;
-    this->init_colors();
 	dis = XOpenDisplay(NULL);
 	win = XCreateSimpleWindow(dis, RootWindow(dis, 0), 1, 1,
         this->pix_width_, this->pix_height_ , 0, BlackPixel (dis, 0), BlackPixel(dis, 0));
@@ -48,15 +47,6 @@ XlibGraphic::~XlibGraphic(void)
 {
 }
 
-void    XlibGraphic::init_colors(void)
-{
-  this->colors[0] = strdup("#00FF00");
-  this->colors[1] = strdup("#FFFFFF");
-  this->colors[2] = strdup("#FF0000");
-  this->colors[3] = strdup("#FFAA00");
-  this->colors[4] = strdup("#00C9FF");
-}
-
 void    XlibGraphic::wait(void)
 {
 	while (1)  {
@@ -66,7 +56,7 @@ void    XlibGraphic::wait(void)
         case ClientMessage:
             throw(new LibraryException("Window closed"));
         case KeyPress:
-          if (XLookupKeysym(&report.xkey, 0) == XK_q)
+          if (XLookupKeysym(&report.xkey, 0) == XK_Escape)
             this->game()->quit();
           if (XLookupKeysym(&report.xkey, 0) == XK_Left)
             this->game()->left();

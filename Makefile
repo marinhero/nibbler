@@ -1,12 +1,12 @@
 ##
-## Makefile for nibbler in /home/baezse_s/nibbler
+## Makefile for nibbler-2016-alcara_m in /home/ignatiev/Projects/nibbler-2016-alcara_m
 ## Makefile for nibbler in /home/baezse_s/nibbler
 ##
 ## Made by ivan ignatiev
 ## Login   <ignati_i@epitech.net>
 ##
 ## Started on  Fri Mar 22 21:02:41 2013 ivan ignatiev
-## Last update Sun Mar 24 22:04:12 2013 Sergio Baez
+## Last update Sun Mar 24 22:32:31 2013 ivan ignatiev
 ##
 
 NB_SRC 		= 		Nibbler.cpp \
@@ -73,7 +73,7 @@ OGL_OBJ 	= 		$(OGL_SRC:.cpp=.o)
 
 DEBUG_OBJ 	= 		$(DEBUG_SRC:.cpp=.o)
 
-all: 		$(NB_NAME) $(GTK_NAME) $(OGL_NAME) $(QT_NAME)
+all: 		$(NB_NAME) $(GTK_NAME) $(OGL_NAME) $(XLIB_NAME)
 
 $(NB_NAME): 	$(NB_OBJ)
 				$(CC) $(NB_OBJ) -lpthread -ldl -o $(NB_NAME)

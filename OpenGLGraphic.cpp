@@ -1,15 +1,14 @@
 //
-// OpenGLGraphic.cpp for nibbler in /home/baezse_s/nibbler
+// OpenGLGraphic.cpp for nibbler-2016-alcara_m in /home/ignati_i/projects/nibbler-2016-alcara_m
 //
 // Made by Sergio Baez
 // Login   <baezse_s@epitech.net>
 //
 // Started on  Fri Mar 22 20:52:43 2013 Sergio Baez
-// Last update Sun Mar 24 22:01:48 2013 Sergio Baez
+// Last update Sun Mar 24 22:27:05 2013 ivan ignatiev
 //
 
 # include <iostream>
-# include <GL/glew.h>
 # include <GL/freeglut.h>
 # include "OpenGLGraphic.hh"
 # include "Exception.hh"
@@ -51,7 +50,8 @@ OpenGLGraphic::OpenGLGraphic(Game *game) : AGraphic(game)
   glLoadIdentity();
   gluOrtho2D(0, this->pix_width_, 0, this->pix_height_);
   glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-  glutSpecialFunc(keyboard);
+  glutKeyboardFunc(keyboard);
+  glutSpecialFunc(skeyboard);
   glutIdleFunc(idle);
   glutDisplayFunc(render);
 }
@@ -65,7 +65,19 @@ void OpenGLGraphic::draw_rect(float x1, float y1, float x2, float y2)
   glRectf(x1, this->pix_height_ - y1, x2, this->pix_height_ - y2);
 }
 
-void keyboard(int key, int x, int y)
+void keyboard(unsigned char key, int x, int y)
+{
+    (void) x;
+    (void) y;
+
+    switch (key)
+    {
+      case 27:
+        graph->game()->quit();
+    }
+}
+
+void skeyboard(int key, int x, int y)
 {
   (void)x;
   (void)y;
@@ -77,9 +89,6 @@ void keyboard(int key, int x, int y)
       break;
     case GLUT_KEY_RIGHT:
       graph->game()->right();
-      break;
-    case 27:
-      graph->game()->quit();
       break;
   }
 }

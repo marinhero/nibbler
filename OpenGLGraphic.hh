@@ -30,7 +30,8 @@ class OpenGLGraphic : public AGraphic
 
 };
 
-void keyboard(int, int, int);
+void keyboard(unsigned char key, int x, int y);
+void skeyboard(int, int, int);
 void render(void);
 void idle(void);
 
